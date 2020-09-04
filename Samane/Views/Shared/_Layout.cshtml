@@ -32,7 +32,7 @@
                                 <span class="icon-bar"></span>
                             </span>
                         </button>
-                        <a href="@Url.Action("Index", "Home")"><img src="~/images/footer-logo.png" />  </a>
+                        <a href="@Url.Action("Index", "Home")"><img src="~/images/logo4.png" />  </a>
                         @*@Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "pic" })*@
                     </div>
                     @*<img src="~/images/footer-logo.png" />*@
@@ -41,6 +41,8 @@
                             <li>@Html.ActionLink("Home", "Index", "Home")</li>
                             <li>@Html.ActionLink("About", "About", "Home")</li>
                             <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                            <li><a href="#contact-section" class="nav-link">ارتباط با ما</a></li>
+                            
                             @if (User.IsInRole("AdminUser"))
                             {
                                 <li>@Html.ActionLink("بیمارستان ها", "index", "Hospital")</li>
@@ -124,8 +126,8 @@
                         </div>
                         <div class="col-lg-3 col-6 des">
                             <aside class="f_widget f_about_widget">
-                                <img src="~/images/footer-logo.png" alt="">
-                                <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui bland itiis praesentium voluptatum deleniti atque corrupti.</p>
+                                <img src="~/images/logo2.png" alt="">
+                                <p>اولین سایت تعمیرات و فروش دستگاه ها و لوازم پزشکی به صورت آنلاین و پشتیبانی 24 ساعته </p>
                                 <ul class="nav">
                                     <li><a href="#"><i class="fa fa-facebook"></i></a></li>
                                     <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
