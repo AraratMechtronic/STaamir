@@ -1,0 +1,96 @@
+﻿Install-Package EntityFramework -IncludePrerelease
+uninstall-Package EntityFramework
+
+Enable-Migrations  -ContextTypeName SamaneDbContext  -MigrationsDirectory Migrations\SamaneDatabase
+add-Migration -ConfigurationTypeName Samane.Migrations.SamaneDatabase.Configuration "Initial"
+update-database  -ConfigurationTypeName Samane.Migrations.SamaneDatabase.Configuration
+
+Enable-Migrations  -ContextTypeName ApplicationDbContext  -MigrationsDirectory Migrations\Identity
+add-Migration -ConfigurationTypeName Samane.Migrations.Identity.Configuration "InitialIdentity"
+update-database  -ConfigurationTypeName Samane.Migrations.Identity.Configuration
+
+Enable-Migrations  -ContextTypeName ApplicationDbContextt  -MigrationsDirectory Migrations\Identity2
+add-Migration -ConfigurationTypeName Samane.Migrations.Identity.Configuration "InitialIdentity2"
+update-database  -ConfigurationTypeName Samane.Migrations.Identity2.Configuration
+
+Enable-Migrations  -ContextTypeName exampleAppDbContext  -MigrationsDirectory Migrations\exampleAppDbContext -EnableAutomaticMigrations
+
+connecting to localDb be aware of instance names
+--- Typically v11.0 , mssqllocaldb
+--- ProjectsV12 is created by data tools, ignore 
+
+connection string 
+--- Data Source=(localdb)\mssqllocaldb;
+
+Get versions/instance via
+--- sqllocaldb i
+--- sqllocaldb v
+
+
+Viewing queries
+--- context.Database.Log=s=> Console.WriteLine(s);  in your context class constructor
+
+CreateDatabaseIfNotExists
+DropCreateDatabaseIfModelChanges
+DropCreateDatabaseAlways
+public class SchoolDBContext: DbContext 
+{
+    public SchoolDBContext(): base("SchoolDBConnectionString") 
+    {
+        Database.SetInitializer<SchoolDBContext>(new CreateDatabaseIfNotExists<SchoolDBContext>());
+    }
+}
+
+Custom DB Initializer:
+public class SchoolDBContext: DbContext 
+{
+    public SchoolDBContext(): base("SchoolDBConnectionString") 
+    {
+        Database.SetInitializer<SchoolDBContext>(new CreateDatabaseIfNotExists<SchoolDBContext>());
+    }
+}
+or
+public class SchoolDBInitializer :  CreateDatabaseIfNotExists<SchoolDBContext>
+{
+    protected override void Seed(SchoolDBContext context)
+    {
+        base.Seed(context);
+    }
+}
+
+
+
+Turn off the DB Initializer
+public class SchoolDBContext: DbContext
+{
+    public SchoolDBContext() : base("SchoolDBConnectionString")
+    {
+        //Disable initializer
+        Database.SetInitializer<SchoolDBContext>(null);
+    }
+}
+
+
+            //var x = new List<Hospital>();
+            //var y = new List<Instrument>();
+
+            //x = SeedDataForHospitalsInstruments.GetHospitals();
+
+            //foreach (var i in x)
+            //{
+            //    context.Hospitals.AddOrUpdate(i);
+            //}
+            //context.SaveChanges();
+
+
+            //y = SeedDataForHospitalsInstruments.GetInstruments(context);
+
+            //foreach (var j in y)
+            //{
+            //    context.Instruments.AddOrUpdate(j);
+            //}
+            //context.SaveChanges();
+
+add-migration AddPersianRoleName01 -ProjectName Samane -ConfigurationTypeName Samane.Migrations.Identity.Configuration
+
+update-Database -ConfigurationTypeName Samane.Migrations.Identity.Configuration

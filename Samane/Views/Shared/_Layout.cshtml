@@ -1,0 +1,170 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="~/css/style.css" rel="stylesheet" />
+
+
+</head>
+<body>
+
+    @*<div class="top_header_area row m0">
+            <hr />
+        </div>*@
+    @*menu e balayi*@
+    <div class="headerr" id="myHeader">
+        <div class="main_menu_two" id="header">
+            @*<div class="dilik-up"></div>*@
+            <div class="bannerr">
+                <div class="container">
+
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                            <span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </span>
+                        </button>
+                        <a href="@Url.Action("Index", "Home")"><img src="~/images/footer-logo.png" />  </a>
+                        @*@Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "pic" })*@
+                    </div>
+                    @*<img src="~/images/footer-logo.png" />*@
+                    <div class="navbar-collapse collapse">
+                        <ul class="nav navbar-nav">
+                            <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                            <li>@Html.ActionLink("About", "About", "Home")</li>
+                            <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                            @if (User.IsInRole("AdminUser"))
+                            {
+                                <li>@Html.ActionLink("بیمارستان ها", "index", "Hospital")</li>
+                                <li>@Html.ActionLink("دستگاه ها", "index", "Instruments")</li>
+
+
+                            }
+                            <li>@Html.ActionLink("Roles", "index", "Role")</li>
+                            @if (User.Identity.IsAuthenticated)
+                            {
+                                <li>@Html.ActionLink("میز کار", "index", "MyPanel")</li>
+                            }
+
+                        </ul>
+                        @Html.Partial("_LoginPartial")
+                    </div>
+                </div>
+            </div>
+            <div class="giz"></div>
+            <div class="dilik-down"></div>
+        </div>
+    </div>
+
+
+    @*<div class="content">*@
+    <div class="container body-content">
+
+        @*<div class="content">*@
+        @RenderBody()
+        <hr />
+        @*<footer>
+                <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+            </footer>*@
+        <footer class="footer_area">
+            <div class="footer_widgets">
+                <div class="container">
+                    <div class="row footer_wd_inner">
+                        <div class="col-lg-3 col-6 des">
+                            <aside class="f_widget f_contact_widget">
+                                <div class="f_title">
+                                    <h4>تماس با ما</h4>
+                                    <hr />
+                                </div>
+                                <div class="footer-item">
+                                    <h4><a href="callto://+37477736696" style="font-size:smaller">+989034075895</a></h4>
+                                    <p>شرکت آرارات مکترونیک <br />جهت پشتیبانی سایت</p>
+                                    <h5>
+                                        <a href="mailto:vaneh_wl@yahoo.com?subject=Learn HTML" title="بر روی ایمیل کلیک کنید">
+                                            vaneh_wl@yahoo.com
+                                    </h5>
+                                </div>
+                            </aside>
+                        </div>
+                        <div class="col-lg-3 col-6 des">
+                            <aside class="f_widget f_contact_widget">
+                                <div class="f_title">
+                                    <h4> ساعت کاری جهت پشتیبانی</h4>
+                                    <hr />
+                                </div>
+                                <div class="footer-item">
+                                    <ul class="list_style">
+                                        <li>شنبه تا چهارشنبه : 9-20</li>
+                                        <li>پنجشنبه : 9-13</li>
+                                    </ul>
+                                </div>
+                            </aside>
+                        </div>
+                        <div class="col-lg-3 col-6 des">
+                            <aside class="f_widget f_link_widget">
+                                <div class="f_title">
+                                    <h4>Quick links</h4>
+                                    <hr />
+                                </div>
+                                <ul class="list_style">
+                                    <li><a href="#">Your Account</a></li>
+                                    <li><a href="#">View Order</a></li>
+                                    <li><a href="#">Privacy Policy</a></li>
+                                    <li><a href="#">Terms & Conditionis</a></li>
+                                </ul>
+                            </aside>
+                        </div>
+                        <div class="col-lg-3 col-6 des">
+                            <aside class="f_widget f_about_widget">
+                                <img src="~/images/footer-logo.png" alt="">
+                                <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui bland itiis praesentium voluptatum deleniti atque corrupti.</p>
+                                <ul class="nav">
+                                    <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+                                </ul>
+                            </aside>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+    @*</div>*@
+
+    <div id="modal-container" class="modal fade" tabindex="-1" role="dialog">
+        <div class="modal-content">
+        </div>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>
+
+@*<script>
+        window.onscroll = function () { myFunction() };
+
+        var headerr = document.getElementById("myHeader");
+        var sticky = headerr.offsetTop;
+
+        function myFunction() {
+            if (window.pageYOffset > sticky) {
+                headerr.classList.add("sticky");
+            } else {
+                headerr.classList.remove("sticky");
+            }
+        }
+    </script>*@

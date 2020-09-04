@@ -1,0 +1,54 @@
+﻿                    var roleStore = new RoleStore<IdentityRole>(new ApplicationDbContext());
+                    var roleManager = new RoleManager<IdentityRole>(roleStore);
+                    await roleManager.CreateAsync(new IdentityRole("CanManageTeams"));
+                    await UserManager.AddToRoleAsync(user.Id,"CanManageTeams");
+
+
+					var roleStore = new RoleStore<IdentityRole>(new ApplicationDbContext());
+                    var roleManager = new RoleManager<IdentityRole>(roleStore);
+                    await roleManager.CreateAsync(new IdentityRole(RoleName.CanManageTeams));
+                    await UserManager.AddToRolesAsync(user.Id, RoleName.CanManageTeams);
+
+
+	     public ActionResult Index()
+        {
+            var context = new ApplicationDbContext();
+            var user = new ApplicationUser();
+            foreach (var u in context.Users)
+            {
+                if (User.Identity.GetUserName() == u.UserName)
+                {
+                    user = u;
+                }
+            }
+            var hospital = new Hospital()
+            {
+                City = user.City,
+                Province = user.Province,
+                HospitalName = user.HospitalName,
+                InChargePerson = user.InChargePerson
+            };
+            var instrumentt = new Instrument()
+            {
+                Category = "aaaaaa",
+                
+                Model="aaaaaa",
+                SerialNo="aaaaaaa",
+                HospitalName = user.HospitalName
+                
+            };
+            var mypanel = new MyPanelViewModel()
+            {
+                
+                Hospital = hospital,
+                instrument = instrumentt
+            };
+
+            if (User.Identity.Name == "")
+            {
+                return RedirectToAction("Index");
+            }
+            else
+                return View(mypanel);
+           
+        }

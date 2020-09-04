@@ -1,0 +1,75 @@
+﻿@model Samane.Models.ApplicationUserForEngineers
+
+@{
+    ViewBag.Title = "IndexForEngineerInfo";
+}
+
+<h2>IndexForEngineerInfo</h2>
+
+<div>
+    <h4>ApplicationUserForEngineers</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.userRole)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.userRole)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NameAndLastName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NameAndLastName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UserName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UserName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TellNumber)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TellNumber)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ExpertInInstruments)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ExpertInInstruments)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.YearsOfWork)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.YearsOfWork)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @*@Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |*@
+    @Html.ActionLink("Back to List", "Index")
+</p>

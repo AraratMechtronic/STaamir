@@ -1,0 +1,102 @@
+﻿@model Samane.Models.Instrument
+@*used in MyPanelHopital*@
+<div class="modal-body" id="addInstrument">
+
+    @using (Html.BeginForm("AddInstruments", "MyPanel", FormMethod.Post, new { @class = "", role = "form", id = "form-instrument-submits" }))
+    {
+        @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>دستگاه جدید</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+           
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Category, new { htmlAttributes = new { @class = "form-control Inline_Block", placeholder = "گروه", title = "گروه" } })
+                @Html.ValidationMessageFor(model => model.Category, "*", new { @class = "text-danger" })
+            </div>
+            <div class="col-md-2">
+               
+            </div>
+        </div>
+
+        <div class="form-group">
+
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Model, new { htmlAttributes = new { @class = "Inline_Block form-control", placeholder = "مدل دستگاه", title = "مدل دستگاه" } })
+                @Html.ValidationMessageFor(model => model.Model, "*", new { @class = "text-danger" })
+            </div>
+            <div class="col-md-2">
+                
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.SerialNo, new { htmlAttributes = new { @class = "form-control Inline_Block", placeholder = "سریال دستگاه", title = "سریال دستگاه" } })
+                @Html.ValidationMessageFor(model => model.SerialNo, "*", new { @class = "text-danger" })
+            </div>
+            <div class="col-md-2">
+               
+            </div>
+        </div>
+
+        @*<div class="form-group">
+            @Html.LabelFor(m => m.HospitalName, new { @class = "col-md-2 control-label" })
+            <div class="col-md-10">
+
+                @Html.DropDownList("HospitalName", new SelectList(ViewBag.hospitalNamess, "Value", "Text"), "Select name of hospital", new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.HospitalName, "", new { @class = "text-danger" })
+            </div>
+        </div>*@
+
+        @Html.HiddenFor(m => m.UserName)
+      
+        <div class="form-group">
+          
+            <div class="button col-md-5" >
+                <button class="button" data-dismiss="modal">
+                    انصراف
+                </button>
+            </div>
+            <div class="button col-md-5">
+                <button class="button"  id="approve-btn">
+                    ثبت
+                </button>
+            </div>
+          
+        </div>
+    </div>
+    }
+</div>
+
+
+<script>
+    $(document).ready(function () {
+          //$('#approve-btn').click(function () {
+          //  $('#modal-container').modal('hide');
+          //});
+
+        $("#addInstrument").on("submit", "#form-instrument-submits", function (e) {
+            e.preventDefault();  // prevent standard form submission
+
+            var form = $(this);
+            $.ajax({
+                url: form.attr("action"),
+                method: form.attr("method"),  // post
+                data: form.serialize(),
+                success: function (partialResult) {
+                    $('#modal-container').modal('hide');
+                    $('#addInstrument').find("#errorMsg").hide();
+                    $("#form-container").html(partialResult);
+
+                },
+                error: function (error) {
+                    $('#addInstrument').find("#errorMsg").html(error).show();
+                }
+            });
+        });
+    });
+
+</script>

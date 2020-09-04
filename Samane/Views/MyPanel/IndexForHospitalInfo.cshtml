@@ -1,0 +1,252 @@
+﻿@model Samane.Models.IndexForHospitalInfoViewModel
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+<style>
+    .modal-content {
+        width: 600px !important;
+        margin: 30px auto !important;
+    }
+</style>
+
+<div class="wrapper wrapper-hospital">
+    <div class="inner inner-hospital">
+        <div class="container">
+            @*<h4>به میزکار بیمارستانی خوش  آمدید</h4>*@
+            @*<hr />*@
+
+            <ul class="nav nav-tabs">
+                <li class="tabColor active"><a data-toggle="tab" href="#HospitalInfo">اطلاعات بیمارستان</a></li>
+                <li class="tabColor"><a data-toggle="tab" href="#instrumentPanel">دستگاهها</a></li>
+
+            </ul>
+            <div class="tab-content tab-content-background panelwidth">
+                <div id="HospitalInfo" class="tab-pane fade in active">
+                    <h3>اطلاعات بیمارستانی</h3>
+                    <p>
+                        @* @Html.ActionLink("تغییر اطلاعات شخصی", "EditHopitalInfo", "MyPanel", null, new { @class = "modal-link btn btn-success" })*@
+                        <input type="button" value="تغییر اطلاعات بیمارستان" class="btn btn-success" id="Open_HospitalEdit" />
+                        <div id="ChangeHospitalInfoDiv" class="DisplayNone row panelMain">
+                            <div class="col-md-5 ErrorMessagePaddings">
+                                <div id="hospitalErrors" class="alert alert-danger DisplayNone" role="alert">
+                                    <ul></ul>
+                                </div>
+                            </div>
+                            <div class="col-md-7">
+                                <div class="form-horizontal">
+                                    <h4>مشخصات بیمارستان</h4>
+                                    <hr />
+                                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                                    @Html.HiddenFor(model => model.hospital.UserNamee)
+                                    @Html.HiddenFor(model => model.hospital.City)
+                                    @Html.HiddenFor(model => model.hospital.Province)
+
+                                    <div class="form-group">
+                                        @Html.LabelFor(model => model.hospital.HospitalName, htmlAttributes: new { @class = "control-label col-md-2" })
+                                        <div class="col-md-10">
+                                            @Html.EditorFor(model => model.hospital.HospitalName, new { htmlAttributes = new { @class = "form-control", id = "txthospitalName" } })
+                                            @Html.ValidationMessageFor(model => model.hospital.HospitalName, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        @Html.LabelFor(model => model.hospital.PhoneNumber, htmlAttributes: new { @class = "control-label col-md-2" })
+                                        <div class="col-md-10">
+                                            @Html.EditorFor(model => model.hospital.PhoneNumber, new { htmlAttributes = new { @class = "form-control", id = "txtPhoneNumber" } })
+                                            @Html.ValidationMessageFor(model => model.hospital.PhoneNumber, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        @Html.LabelFor(model => model.hospital.InChargePerson, htmlAttributes: new { @class = "control-label col-md-2" })
+                                        <div class="col-md-10">
+                                            @Html.EditorFor(model => model.hospital.InChargePerson, new { htmlAttributes = new { @class = "form-control", id = "txtInChargePerson" } })
+                                            @Html.ValidationMessageFor(model => model.hospital.InChargePerson, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+
+
+                                    <div class="form-group">
+
+                                        <div class="button col-md-5">
+                                            <button class="button" data-dismiss="modal" id="MPH_cancelHospitalEdit">
+                                                انصراف
+                                            </button>
+                                        </div>
+                                        <div class="button col-md-5">
+                                            <button class="button" id="MPH_submitHospitalEdit">
+                                                ثبت
+                                            </button>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <table class="table-responsive table table-striped" id="MP_HopitalDisplayInfo">
+                            
+                            <tr>
+                                <td class="td_header">  @Html.DisplayNameFor(model => model.hospital.HospitalName)</td>
+                                <td id = "HospitalNamelbl">@Html.DisplayFor(model => model.hospital.HospitalName)</td>
+                            </tr>
+                            <tr>
+                                <td class="td_header">  @Html.DisplayNameFor(model => model.hospital.InChargePerson)</td>
+                                <td id = "InChargePersonlbl">@Html.DisplayFor(model => model.hospital.InChargePerson)</td>
+                            </tr>
+                            <tr>
+                                <td class="td_header">  @Html.DisplayNameFor(model => model.HospitalUser.NameAndLastName)</td>
+                                <td >@Html.DisplayFor(model => model.HospitalUser.NameAndLastName)</td>
+                            </tr>
+                            <tr>
+                                <td class="td_header">  @Html.DisplayNameFor(model => model.HospitalUser.UserName)</td>
+                                <td >@Html.DisplayFor(model => model.HospitalUser.UserName)</td>
+                            </tr>
+                            <tr>
+                                <td class="td_header">@Html.DisplayNameFor(model => model.HospitalUser.PhoneNumber)</td>
+                                <td id = "PhoneNumberlbl"> @Html.DisplayFor(model => model.HospitalUser.PhoneNumber)</td>
+                            </tr>
+                        </table>
+
+                    </p>
+                </div>
+                <div id="instrumentPanel" class="tab-pane fade">
+                    <h3>دستگاهها</h3>
+                    @*@Html.ActionLink("اضافه کردن دستگاه", "AddInstruments", "MyPanel", null, new { @class = "modal-link btn btn-success" })*@
+                    <input type="button" value="اضافه کردن دستگاه" class="btn btn-success" id="Open_addInstrument" />
+                    <div id="addInstrument" class="DisplayNone row">
+                        <div class="col-md-5 ErrorMessagePaddings">
+                            <div id="instrumentErrors" class="alert alert-danger DisplayNone" role="alert">
+                                <ul></ul>
+                            </div>
+                        </div>
+                        <div class="col-md-7">
+                            <div class="form-horizontal">
+                                <h4>دستگاه جدید</h4>
+                                <hr />
+                                <div class="form-group">
+
+                                    <div class="col-md-10">
+                                        @Html.EditorFor(model => model.instrument.Category, new { htmlAttributes = new { @class = "form-control Inline_Block", placeholder = "گروه", title = "گروه", id = "txtCategory" } })
+                                        @Html.ValidationMessageFor(model => model.instrument.Category, "*", new { @class = "text-danger" })
+                                    </div>
+                                    <div class="col-md-2">
+
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+
+                                    <div class="col-md-10">
+                                        @Html.EditorFor(model => model.instrument.Model, new { htmlAttributes = new { @class = "Inline_Block form-control", placeholder = "مدل دستگاه", title = "مدل دستگاه", id = "txtModel" } })
+                                        @Html.ValidationMessageFor(model => model.instrument.Model, "*", new { @class = "text-danger" })
+                                    </div>
+                                    <div class="col-md-2">
+
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <div class="col-md-10">
+                                        @Html.EditorFor(model => model.instrument.SerialNo, new { htmlAttributes = new { @class = "form-control Inline_Block", placeholder = "سریال دستگاه", title = "سریال دستگاه", id = "txtSerial" } })
+                                        @Html.ValidationMessageFor(model => model.instrument.SerialNo, "*", new { @class = "text-danger" })
+                                    </div>
+                                    <div class="col-md-2">
+
+                                    </div>
+                                </div>
+
+                                @*<div class="form-group">
+                                        @Html.LabelFor(m => m.HospitalName, new { @class = "col-md-2 control-label" })
+                                        <div class="col-md-10">
+
+                                            @Html.DropDownList("HospitalName", new SelectList(ViewBag.hospitalNamess, "Value", "Text"), "Select name of hospital", new { @class = "form-control" })
+                                            @Html.ValidationMessageFor(model => model.HospitalName, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>*@
+
+                                @Html.HiddenFor(m => m.hospital.UserNamee)
+
+                                <div class="form-group">
+
+                                    <div class="button col-md-5">
+                                        <button class="button caneclInstrument">
+                                            انصراف
+                                        </button>
+                                    </div>
+                                    <div class="button col-md-5">
+                                        <button class="button" id="HPanel-addInstrument">
+                                            ثبت
+                                        </button>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <p>
+                        @if (Model.hospital.instruments.Count() > 0 && Model.hospital.instruments != null)
+                        {
+                            int counter = 0;
+                            <table class="table table-striped" id="instrumentList">
+                                <tr>
+                                    <td scope="col" class="align_right">#</td>
+                                    <td scope="col" class="align_right td_header">کد دستگاه</td>
+                                    <td scope="col" class="align_right td_header">مدل دستگاه</td>
+                                    <td scope="col" class="align_right td_header">سریال</td>
+                                    <td scope="col" class="align_right td_header">گروه</td>
+                                    <td scope="col" class="align_right td_header"> </td>
+                                    <td scope="col" class="align_right td_header"> </td>
+                                </tr>
+                                <tbody>
+
+                                    @foreach (var instrumentItem in Model.hospital.instruments.OrderByDescending(i => i.InstrumentId))
+                                    {
+                                        counter++;
+                                        <tr>
+                                            <td scope="row"> @counter </td>
+                                            <td> @instrumentItem.InstrumentId </td>
+                                            <td> @instrumentItem.Model </td>
+                                            <td> @instrumentItem.SerialNo </td>
+                                            <td> @instrumentItem.Category </td>
+                                            <td>
+                                                @Html.ActionLink("ویرایش", "EditInstrument", "MyPanel", new { instrumentId = instrumentItem.InstrumentId }, new { @class = "modal-link btn btn-success" })
+
+                                                @*            <button id="Edit" data-bind="@instrumentItem.InstrumentId" class="btn btn-success">ویرایش</button>*@
+                                            </td>
+                                            <td>
+                                                @*@Html.Action("DeleteInstrument", "MyPanel", new { insrumentId = instrumentItem.InstrumentId } )*@
+                                                <button data-bind="@instrumentItem.InstrumentId" class="btn btn-success HMP_DeleteInstrument">حذف</button>
+                                                @*@Html.ActionLink(linkText: "حذف", actionName: "DeleteInstrument", controllerName: "MyPanel", htmlAttributes: new { @class = "btn btn-danger" }, routeValues: new { insrumentId = instrumentItem.InstrumentId })*@
+</tr>
+                                    }
+                                </tbody>
+                            </table>
+                        }
+                        else
+                        {
+                            <span>
+                                دستگاهی وارد نشده است
+                            </span>
+                        }
+
+
+                    </p>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</div>
+<p>
+    @Html.ActionLink("تکمیل اطلاعات مربوط به بیمارستان", "FillHospitalInfo") |
+    @Html.ActionLink("Back to List", "Index")
+</p>
+
+
+
+

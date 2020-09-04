@@ -1,0 +1,50 @@
+﻿
+@using Samane.Models
+@model Samane.Models.AuthenticationViewModel
+@{
+    ViewBag.Title = "تعیین نوع کاربری";
+}
+
+
+<div class="wrapper wrapper-hospital">
+    <div class="inner inner-hospital">
+        <div class="image-holder">
+            <img class="imgauthen" src="~/images/registration-form-4-10.jpg" alt="">
+        </div>
+
+
+            @using (Html.BeginForm("Authenticate", "Account", FormMethod.Post, new { @class = "", role = "form" }))
+            {
+                @Html.AntiForgeryToken()
+                <h2>@ViewBag.Title</h2>
+                <div class="resize">
+                    @Html.ValidationSummary("", new { @class = "text-danger" })
+
+                    @*<div class="form-group">
+                    @Html.LabelFor(m => m.userCategory, new { @class = "col-md-2 control-label" })
+                    <div class="col-md-10">
+
+                        @Html.DropDownList("userCategory", new SelectList(Enum.GetValues(typeof(UserCategory))), "Select Type of User", new { @class = "form-control" })
+
+                    </div>
+                </div>*@
+
+                    <div class="form-holder active">
+                        @*@Html.LabelFor(m => m.userCategory, new { @class = "col-md-2 control-label" })*@
+
+                        @Html.DropDownList("userCategory", new SelectList(ViewBag.Roles, "Value", "Text"), "نوع کاربری خود را انتخاب نمایید", new { @class = "form-control" })
+
+                    </div>
+                </div>
+
+                <div class="form-login">
+                    @*<input type="submit" class="btn btn-default" value="مرحله بعد" />*@
+                    <button>مرحله بعد</button>
+                </div>
+            }
+
+            </div>
+        </div>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

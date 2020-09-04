@@ -1,0 +1,54 @@
+﻿$("#HPanel-addInstrument").click(function (e) {
+		var form = $(this);
+		const thisInstrument =
+		{
+			Category: document.getElementById("txtCategory").value,
+			Model: document.getElementById("txtModel").value,
+			SerialNo: document.getElementById("txtSerial").value,
+			UserName: "",
+			Hospital: null,
+			InstrumentId: 0
+		};
+		$.ajax({
+			type: "POST",
+			url: "/MyPanel/InstrumentAdd",
+			contentType: "application/json; charset=utf-8",
+			dataType: "json",
+			data: '{ thisInstrument: ' + JSON.stringify(thisInstrument) + ' }',
+			success: function (response) {
+				console.log(response.statusText);
+				if (response.success) {
+					alert(response.responseText);
+					var InstrumentId = response.responseText;
+					
+					$("#instrumentList>tbody:last").prepend("<tr><td scope='row'>" + "1"
+						+ "</td><td>" + InstrumentId
+						+ "</td><td>" + thisInstrument.Model
+						+ "</td><td>" + thisInstrument.SerialNo
+						+ "</td><td>" + thisInstrument.Category
+						+ "</td><td><a class='modal-link btn btn-success' href='/MyPanel/EditInstrument?instrumentId=" + InstrumentId + "'>ویرایش</a>"
+						+ "</td><td><a class='btn btn-danger' href='/MyPanel/DeleteInstrument?insrumentId=" + InstrumentId + "'>حذف</a>"
+						+ "</td></tr>");
+
+
+					$("#addInstrument").addClass("DisplayNone");
+					
+					// var reloadTable = function (employees) {
+					//	var table = $('#employeesTable');
+					//	table.find("tbody tr").remove();
+					//	employees.forEach(function (employee) {
+					//		table.append("<tr><td>" + employee.id + "</td><td>" + employee.name + "</td></tr>");
+					//	});
+					//};
+
+					
+				} else {
+					// DoSomethingElse()
+					alert(response.responseText);
+				}        
+			},
+			error: function (data) {
+				console.log('error');
+			}
+		});
+	});
