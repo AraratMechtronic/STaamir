@@ -242,11 +242,19 @@ namespace Samane.Controllers
             return JavaScript("alert(" + errorMessage.First() + ");");
 
         }
-        public ActionResult DeleteInstrument(int insrumentId)
+        //public ActionResult DeleteInstrument(int insrumentId)
+        //{
+        //    errorMessage = new List<string>();
+        //    indexForHospitalInfoViewModel.DeleteInstrument(insrumentId, out errorMessage);
+        //    return RedirectToAction("Index");
+        //}
+
+        public JsonResult DeleteInstrument(int insrumentId)
         {
             errorMessage = new List<string>();
-            indexForHospitalInfoViewModel.DeleteInstrument(insrumentId, out errorMessage);
-            return RedirectToAction("Index");
+            if(indexForHospitalInfoViewModel.DeleteInstrument(insrumentId, out errorMessage))
+                return Json(new { success = true, responseText = "حذف انجام شد" }, JsonRequestBehavior.AllowGet);
+            return Json(new { success = false, responseText = "تغییری در اطلاعات داده نشده است." }, JsonRequestBehavior.AllowGet);
         }
         public void GetHospitalViewInformation()
         {

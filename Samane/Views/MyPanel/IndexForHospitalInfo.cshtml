@@ -213,13 +213,13 @@
                                             <td> @instrumentItem.SerialNo </td>
                                             <td> @instrumentItem.Category </td>
                                             <td>
-                                                @Html.ActionLink("ویرایش", "EditInstrument", "MyPanel", new { instrumentId = instrumentItem.InstrumentId }, new { @class = "modal-link btn btn-success" })
+                                                @Html.ActionLink("ویرایش", "EditInstrument", "MyPanel", new { instrumentId = instrumentItem.InstrumentId }, new { @class = "modal-link btn btn-success btn_Width_Height" })
 
                                                 @*            <button id="Edit" data-bind="@instrumentItem.InstrumentId" class="btn btn-success">ویرایش</button>*@
                                             </td>
                                             <td>
                                                 @*@Html.Action("DeleteInstrument", "MyPanel", new { insrumentId = instrumentItem.InstrumentId } )*@
-                                                <button data-bind="@instrumentItem.InstrumentId" class="btn btn-success HMP_DeleteInstrument">حذف</button>
+                                                <button data-bind="@instrumentItem.InstrumentId" class="btn btn-danger btn_Width_Height HMP_DeleteInstrument">حذف</button>
                                                 @*@Html.ActionLink(linkText: "حذف", actionName: "DeleteInstrument", controllerName: "MyPanel", htmlAttributes: new { @class = "btn btn-danger" }, routeValues: new { insrumentId = instrumentItem.InstrumentId })*@
 </tr>
                                     }
