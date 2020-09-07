@@ -11,9 +11,12 @@
     --from-Header-color: lightyellow;
 }*/
 *:root {
-    --body-background-color-hospital: #a7e0a8 /*#daeaf7*/;
-    --body-background-color-engineer: #bfe6e6;
-    --body-background-color-admin: #b8929d;
+    --body-background-color-hospital: #777;
+        /*a7e0a8*/ /*#daeaf7*/;
+    --body-background-color-engineer: #777;
+        /*#bfe6e6;*/
+    --body-background-color-admin: #777;
+        /*#b8929d;*/
     --body-background-color: #777;
     --themes-main-color: #777;
     --main-input-color: #ececec;
