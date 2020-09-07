@@ -5,46 +5,57 @@
 }
 
 <h2>Details</h2>
+<div class="wrapper wrapper-engineer">
+    <div class="inner inner-engineer">
+        <div class="image-holder">
+            <img src="~/images/detail.jpg" alt="">
+        </div>
 
-<div>
-    <h4>Instrument</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.hospital.Province)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.hospital.Province)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Category)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Category)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Model)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Model)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.SerialNo)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.SerialNo)
-        </dd>
-
-    </dl>
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+            <h2>جزئیات</h2>
+            <div class="">
+                <div class="form-group centerflex">
+                    @*@Html.DisplayNameFor(model => model.hospital.Province)*@
+                    @Html.LabelFor(model => model.hospital.Province, htmlAttributes: new { @class = "control-label lablesize col-md-2" })
+                    <div class="col-md-10 form-control centerflex">
+                        @Html.DisplayFor(model => model.hospital.Province, new { htmlAttributes = new { @class = "form-control" } })
+                    </div>
+                </div>
+                <div class="form-group centerflex">
+                    @*@Html.DisplayNameFor(model => model.Category)*@
+                    @Html.LabelFor(model => model.Category, htmlAttributes: new { @class = "control-label lablesize col-md-2" })
+                    <div class="col-md-10 form-control centerflex">
+                        @Html.DisplayFor(model => model.Category)
+                    </div>
+                </div>
+                <div class="form-group centerflex">
+                    @*@Html.DisplayNameFor(model => model.Model)*@
+                    @Html.LabelFor(model => model.Model, htmlAttributes: new { @class = "control-label lablesize col-md-2" })
+                    <div class="col-md-10 form-control centerflex">
+                        @Html.DisplayFor(model => model.Model)
+                    </div>
+                </div>
+                <div class="form-group centerflex">
+                    @*@Html.DisplayNameFor(model => model.SerialNo)*@
+                    @Html.LabelFor(model => model.SerialNo, htmlAttributes: new { @class = "control-label lablesize col-md-2" })
+                    <div class="col-md-10 form-control centerflex">
+                        @Html.DisplayFor(model => model.SerialNo)
+                    </div>
+                </div>
+                <div class="form-login">
+                    <button>
+                        @Html.ActionLink("ویرایش", "Edit", new { id = Model.InstrumentId })
+                    </button>
+                    <button>
+                        @Html.ActionLink("برگشت به لیست", "Index")
+                    </button>
+                </div>
+            </div>
+        }
+    </div>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.InstrumentId }) |
-    @Html.ActionLink("Back to List", "Index")
+
 </p>
