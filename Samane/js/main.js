@@ -172,3 +172,4 @@
 	});
 
 })(jQuery);
+//this is a file containing main javascript
