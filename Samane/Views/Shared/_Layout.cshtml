@@ -42,7 +42,7 @@
                             <li>@Html.ActionLink("About", "About", "Home")</li>
                             <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
                             <li><a href="#contact-section" class="nav-link">ارتباط با ما</a></li>
-                            
+
                             @if (User.IsInRole("AdminUser"))
                             {
                                 <li>@Html.ActionLink("بیمارستان ها", "index", "Hospital")</li>
