@@ -147,7 +147,6 @@
 	$(".HMP_DeleteInstrument").click(function (e) {
 		const instrumentId = $(this).data().bind;
 		var btn = $(this);
-		//$(this).closest('tr').addClass('DisplayNone');
 		$.ajax({
 			type: "POST",
 			url: "/MyPanel/DeleteInstrument",
