@@ -378,6 +378,9 @@ h2, h3 {
 .lablesize {
     width: 80px;
 }
+.lablesizepannel {
+    width: 50%;
+}
 
 @-webkit-keyframes hvr-wobble-horizontal {
     16.65% {
