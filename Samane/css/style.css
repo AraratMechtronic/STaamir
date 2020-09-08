@@ -266,6 +266,7 @@ a {
 /*es*/
 form {
     width: 50%;
+    margin: 0 auto;
     padding-top: 37px;
     padding-right: 15px; /*60van*/
     padding-left: 15px;
