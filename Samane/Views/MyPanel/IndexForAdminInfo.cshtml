@@ -6,46 +6,88 @@
 
 <h2>Index</h2>
 
-<div>
-    <h4>ApplicationUser</h4>
-    <hr />
-    <dl class="dl-horizontal">
+<div class="wrapper wrapper-engineer">
+    <div class="inner inner-engineer">
+        @*<dl class="dl-horizontal">
 
-        <dt>
-            @Html.DisplayNameFor(model => model.NameAndLastName)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.NameAndLastName)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.NameAndLastName)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.NameAndLastName)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Email)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.Email)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Email)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.Email)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.userRole)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.userRole)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.userRole)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.userRole)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.UserName)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.UserName)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.UserName)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.UserName)
+            </dd>
 
-    </dl>
+        </dl>*@
+        @*<div class="centerform">*@
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+                <h2>اطلاعات کاربری</h2>
+                <div class="">
+                    <div class="form-group centerflex">
+                        @*@Html.DisplayNameFor(model => model.hospital.Province)*@
+                        @Html.LabelFor(model => model.NameAndLastName, htmlAttributes: new { @class = "control-label lablesize col-md-2" })
+                        <div class="col-md-10 form-control centerflex">
+                            @Html.DisplayFor(model => model.NameAndLastName)
+                        </div>
+                    </div>
+                    <div class="form-group centerflex">
+                        @*@Html.DisplayNameFor(model => model.hospital.Province)*@
+                        @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label lablesize col-md-2" })
+                        <div class="col-md-10 form-control centerflex">
+                            @Html.DisplayFor(model => model.Email)
+                        </div>
+                    </div>
+                    <div class="form-group centerflex">
+                        @*@Html.DisplayNameFor(model => model.hospital.Province)*@
+                        @Html.LabelFor(model => model.userRole, htmlAttributes: new { @class = "control-label lablesize col-md-2" })
+                        <div class="col-md-10 form-control centerflex">
+                            @Html.DisplayFor(model => model.userRole)
+                        </div>
+                    </div>
+                    <div class="form-group centerflex">
+                        @*@Html.DisplayNameFor(model => model.hospital.Province)*@
+                        @Html.LabelFor(model => model.UserName, htmlAttributes: new { @class = "control-label lablesize col-md-2" })
+                        <div class="col-md-10 form-control centerflex">
+                            @Html.DisplayFor(model => model.UserName)
+                        </div>
+                    </div>
+                    <div class="form-login">
+                        <button>
+                            @Html.ActionLink("برگشت به لیست", "Index")
+                        </button>
+                    </div>
+                </div>
+            }
+        @*</div>*@
+    </div>
 </div>
-<p>
-    @*@Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |*@
+@*<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
     @Html.ActionLink("Back to List", "Index")
-</p>
+</p>*@
