@@ -37,6 +37,9 @@
                                 <div class="checkbox">
                                     @Html.CheckBoxFor(m => m.RememberMe)
                                     @Html.LabelFor(m => m.RememberMe)
+                                    <div class="ahrafcolor">
+                                    @Html.ActionLink("رمز عبور را فراموش کردی؟", "ForgotPassword", "Account")
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -46,14 +49,13 @@
                             <button>ورود</button>
 
                         </div>
-                        <p>
+                        @*<p>
                             @Html.ActionLink("Register as a new user", "Register")
-                        </p>
-                        @* Enable this once you have account confirmation enabled for password reset functionality
-                    <p>
-                        @Html.ActionLink("Forgot your password?", "ForgotPassword")
-                    </p>*@
-                    </div>
+                        </p>*@
+                        @*<div>
+                        <p> Enable this once you have account confirmation enabled for password reset functionality </p>
+                    </div>*@
+                        </div>
                 }
         </div>
     </div>
