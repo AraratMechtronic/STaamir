@@ -95,8 +95,8 @@ body {
 
 .panelMain {
     padding: 15px;
-    border: solid 1px;
-    border-color: var(--main-input-color);
+    /*border: solid 1px;
+    border-color: var(--main-input-color);*/
     margin: 3px;
 }
 
@@ -128,16 +128,6 @@ ul {
     margin-bottom: 0;
 }
 
-a {
-    text-decoration: none;
-    color: white;
-    transition: all 0.3s ease;
-}
-
-    a:hover {
-        text-decoration: none;
-        color: white;
-    }
 
 :focus {
     outline: none;
@@ -497,12 +487,36 @@ button, .butten {
     margin-bottom: 37px;
     margin-left: 26px;
 }
+/*.ahrafcolor {
+    color: red;
+    background-color: red;
+}*/
 
-    .checkbox label {
+.checkbox label {
+    cursor: pointer;
+    color: #999;
+}
+    .checkbox a {
+        cursor: pointer;
+        color: #999;
+    }
+    .checkbox a:hover {
         cursor: pointer;
         color: #999;
     }
 
+a {
+    text-decoration: none;
+    color: white;
+    /*color: #999;*/
+    transition: all 0.3s ease;
+}
+
+    a:hover {
+        text-decoration: none;
+        color: white;
+        /*color: #999;*/
+    }
     .checkbox input {
         position: absolute;
         opacity: 0;
@@ -1157,4 +1171,7 @@ th, td {
 
 .centertext {
     text-align: center;
+}
+.btnn {
+    float: right;
 }
