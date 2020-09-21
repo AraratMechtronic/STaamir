@@ -370,6 +370,7 @@ h2, h3 {
 }
 .lablesizepannel {
     width: 50%;
+    color: #777777;
 }
 
 @-webkit-keyframes hvr-wobble-horizontal {
@@ -487,10 +488,6 @@ button, .butten {
     margin-bottom: 37px;
     margin-left: 26px;
 }
-/*.ahrafcolor {
-    color: red;
-    background-color: red;
-}*/
 
 .checkbox label {
     cursor: pointer;
@@ -504,6 +501,14 @@ button, .butten {
         cursor: pointer;
         color: #999;
     }
+.unformframe a {
+    cursor: pointer;
+    color: white;
+}
+.unformframe a:hover {
+    cursor: pointer;
+    color: white;
+}
 
 a {
     text-decoration: none;
@@ -517,6 +522,13 @@ a {
         color: white;
         /*color: #999;*/
     }
+.unformframe {
+    width: 50%;
+    margin: 0 auto;
+    padding-top: 37px;
+    padding-right: 15px;
+    padding-left: 15px;
+}
     .checkbox input {
         position: absolute;
         opacity: 0;
