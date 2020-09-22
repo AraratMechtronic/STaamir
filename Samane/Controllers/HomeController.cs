@@ -25,5 +25,9 @@ namespace Samane.Controllers
             ViewBag.Message = "Your contact page.";
             return View();
         }
+        public ActionResult Shopping()
+        {
+            return View();
+        }
     }
 }
