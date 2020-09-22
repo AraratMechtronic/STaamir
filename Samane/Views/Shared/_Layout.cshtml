@@ -41,22 +41,22 @@
                             <li>@Html.ActionLink("Home", "Index", "Home")</li>
                             <li>@Html.ActionLink("About", "About", "Home")</li>
                             <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-                            <li><a href="#contact-section" class="nav-link">ارتباط با ما</a></li>
+                            <li><a href="~/Home/Index/#contact-section">ارتباط با ما</a></li>
 
-                            @if (User.IsInRole("AdminUser"))
-                            {
+                                @if (User.IsInRole("AdminUser"))
+                                {
                                 <li>@Html.ActionLink("بیمارستان ها", "index", "Hospital")</li>
                                 <li>@Html.ActionLink("دستگاه ها", "index", "Instruments")</li>
 
 
                             }
-                            <li>@Html.ActionLink("Roles", "index", "Role")</li>
-                            @if (User.Identity.IsAuthenticated)
-                            {
-                                <li>@Html.ActionLink("میز کار", "index", "MyPanel")</li>
-                            }
+                                <li>@Html.ActionLink("Roles", "index", "Role")</li>
+                                @if (User.Identity.IsAuthenticated)
+                                {
+                                    <li>@Html.ActionLink("میز کار", "index", "MyPanel")</li>
+                                }
 
-                        </ul>
+                            </ul>
                         @Html.Partial("_LoginPartial")
                     </div>
                 </div>
