@@ -52,17 +52,11 @@
             <div class="form-login">
                 <button>
                     @*<input type="submit" value="Delete" class="btn btn-default" />*@
-                    @Html.ActionLink("حذف", "Index", new { id = Model.InstrumentId })
+                    @*@Html.ActionLink("حذف", "Index", new { id = Model.InstrumentId })*@
+                    @Html.ActionLink("حذف", "Index")
                 </button>
-                <button>
-                    @Html.ActionLink("برگشت به لیست", "Index")
-                </button>
-            </div>
 
-            @*<div class="form-actions no-color">
-                    <input type="submit" value="Delete" class="btn btn-default" /> |
-                    @Html.ActionLink("Back to List", "Index")
-                </div>*@
+            </div>
         }
     </div>
 </div>
