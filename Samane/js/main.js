@@ -27,14 +27,15 @@
 	});
 		
 	$("#Open_addInstrument").click(function (e) {
-		//$("#addInstrument").removeAttr("style")
 		$("#addInstrument").removeClass("DisplayNone");
+		$("#lblInstrumentId").addClass("DisplayNone");
 	});
 
 	$(".caneclInstrument").click(function (e) {
 		$("#addInstrument").addClass("DisplayNone");//.attr("style", "display:none")
 	});
-    
+
+	
 	$("#HPanel-addInstrument").click(function (e) {
 
 		const thisInstrument =
@@ -55,7 +56,7 @@
 			success: function (response) {
 				console.log(response.statusText);
 				if (response.success) {
-					alert(response.responseText);
+					//alert(response.responseText);
 					var InstrumentId = response.responseText;
 					//newRow.attr("scope", "row");
 					$("#instrumentList>tbody:last").prepend("<tr><td scope='row'>" + "1"
@@ -171,5 +172,189 @@
 		});
 	});
 
+	$("#MPH_EditRequestInstrument").click(function (e) {
+		const instrumentId = $(this).data().bind;
+		var btn = $(this);
+		
+		$.ajax({
+			type: "POST",
+			url: '/MyPanel/GetHospitalInstrument',
+			data: '{ instrumentId: ' + JSON.stringify(instrumentId) + ' }',
+			contentType: "application/json; charset=utf-8",
+			dataType: "json",
+			beforeSend: function () {
+				//Show();  Show loader icon  
+			},
+			success: function (response) {
+				alert(response.responseText);
+				var thisinstrument = $.parseJSON(response.responseText);
+				//Add information to add or update form
+				document.getElementById("lbl_instrumentId").value = thisinstrument.InstrumentId;
+				document.getElementById("txtModel_Edit").value = thisinstrument.Model;
+				document.getElementById("txtCategory_Edit").value = thisinstrument.Category;
+				document.getElementById("txtSerialNo_Edit").value = thisinstrument.SerialNo;
+
+				document.getElementById("txtModelBefore_Edit").value = thisinstrument.Model;
+				document.getElementById("txtCategoryBefore_Edit").value = thisinstrument.Category;
+				document.getElementById("txtSerialNoBefore_Edit").value = thisinstrument.SerialNo;
+
+				btn.closest('tr').remove();//Exclude row from list
+				$("#lblInstrumentId").removeClass('DisplayNone');
+				$("#editInstrument").removeClass("DisplayNone");
+			},
+			complete: function () {
+				//Hide();  Hide loader icon  
+			},
+			failure: function (jqXHR, textStatus, errorThrown) {
+				alert("HTTP Status: " + jqXHR.status + "; Error Text: " + jqXHR.responseText); // Display error message  
+			},
+			error: function (response) {
+				alert('error');
+				btn.closest('tr').removeClass('DisplayNone');//Exclude row from project
+				$("#addInstrument").addClass("DisplayNone");
+			}
+		});  
+		
+		//console.log('instrumentId is: '+instrumentId);
+		//var btn = $(this);
+		//btn.closest('tr').addClass('DisplayNone');//Exclude row from project
+		//$("#addInstrument").removeClass("DisplayNone");
+		////$("#lblInstrumentId").removeClass("DisplayNone");
+		//$.ajax({
+		//	type: "POST",
+		//	url: "/MyPanel/GetHospitalInstrument",
+		//	contentType: "application/json; charset=utf-8",
+		//	dataType: "json",
+		//	data: {},/*'{ instrumentId :' + JSON.stringify(instrumentId) + ' }',*/
+		//	success: function (response) {
+		//		console.log('response');
+		//		//$('#output').append('It is right');  
+		//		//var obj = JSON.parse(response);
+		//		//alert(obj.InstrumentId);
+		//		//console.log(response.user);
+		//		//if (response.success) {
+		//		//	console.log(response.responseText);
+					
+		//		//	//response.responseText.
+		//		//	//$("#lblInstrumentId").text(response.);
+		//		//	console.log('success');
+
+		//		//} else {
+
+		//		//	alert(response.responseText);
+		//		//}
+		//	},
+		//	error: function (response) {
+		//		console.log('error');
+		//		btn.closest('tr').removeClass('DisplayNone');//Exclude row from project
+		//		$("#addInstrument").addClass("DisplayNone");
+		//	}
+		//});
+	});
+
+	$("#MPH_caneclEditInstrument").click(function (e) {
+		$("#editInstrument").addClass("DisplayNone");
+		
+		console.log('MPH_caneclEditInstrument');
+		console.log(document.getElementById("lbl_instrumentId").value);
+
+		if ($("#instrumentList>tbody").length) {
+			$("#instrumentList>tbody:last").prepend("<tr><td scope='row'>" + "1"
+				+ "</td><td>" + document.getElementById("lbl_instrumentId").value
+				+ "</td><td>" + document.getElementById("txtModelBefore_Edit").value
+				+ "</td><td>" + document.getElementById("txtSerialNoBefore_Edit").value
+				+ "</td><td>" + document.getElementById("txtCategoryBefore_Edit").value
+				+ "</td><td><a class='modal-link btn btn-success' href='/MyPanel/EditInstrument?instrumentId=" + document.getElementById("lbl_instrumentId").value + "'>ویرایش</a>"
+				+ "</td><td><a class='btn btn-danger' href='/MyPanel/DeleteInstrument?insrumentId=" + document.getElementById("lbl_instrumentId").value + "'>حذف</a>"
+				+ "</td></tr>");
+		}
+		else {
+			$("#instrumentList").prepend("<tbody><tr><td scope='row'>" + "1"
+				+ "</td><td>" + document.getElementById("lbl_instrumentId").value
+				+ "</td><td>" + document.getElementById("txtModelBefore_Edit").value
+				+ "</td><td>" + document.getElementById("txtSerialNoBefore_Edit").value
+				+ "</td><td>" + document.getElementById("txtCategoryBefore_Edit").value
+				+ "</td><td><a class='modal-link btn btn-success' href='/MyPanel/EditInstrument?instrumentId=" + document.getElementById("lbl_instrumentId").value + "'>ویرایش</a>"
+				+ "</td><td><a class='btn btn-danger' href='/MyPanel/DeleteInstrument?insrumentId=" + document.getElementById("lbl_instrumentId").value + "'>حذف</a>"
+				+ "</td></tr>");
+		}
+		document.getElementById("lbl_instrumentId").value = "";
+		document.getElementById("txtModelBefore_Edit").value = "";
+		document.getElementById("txtSerialNoBefore_Edit").value = "";
+		document.getElementById("txtCategoryBefore_Edit").value = "";
+		document.getElementById("txtModel_Edit").value = "";
+		document.getElementById("txtCategory_Edit").value = "";
+		document.getElementById("txtSerialNo_Edit").value = "";
+	});
+	
+	$("#MPH-EditInstrument").click(function (e) {
+
+		const thisInstrument =
+		{
+			Category: document.getElementById("txtCategory_Edit").value,
+			Model: document.getElementById("txtModel_Edit").value,
+			SerialNo: document.getElementById("txtSerialNo_Edit").value,
+			UserName: "",
+			Hospital: null,
+			InstrumentId: document.getElementById("lbl_instrumentId").value
+		};
+		$.ajax({
+			type: "POST",
+			url: "/MyPanel/EditInstrument",
+			contentType: "application/json; charset=utf-8",
+			dataType: "json",
+			data: '{ thisInstrument: ' + JSON.stringify(thisInstrument) + ' }',
+			success: function (response) {
+				console.log(response.statusText);
+				if (response.success) {
+					//alert(response.responseText);
+					var InstrumentId = response.responseText;
+					//newRow.attr("scope", "row");
+					alert(thisInstrument.SerialNo);
+					if ($("#instrumentList>tbody").length) {
+						$("#instrumentList>tbody:last").prepend("<tr><td scope='row'>" + "1"
+							+ "</td><td>" + InstrumentId
+							+ "</td><td>" + thisInstrument.Model
+							+ "</td><td>" + thisInstrument.SerialNo
+							+ "</td><td>" + thisInstrument.Category
+							+ "</td><td><a class='modal-link btn btn-success' href='/MyPanel/EditInstrument?instrumentId=" + InstrumentId + "'>ویرایش</a>"
+							+ "</td><td><a class='btn btn-danger' href='/MyPanel/DeleteInstrument?insrumentId=" + InstrumentId + "'>حذف</a>"
+							+ "</td></tr>");
+					}
+					else {
+						$("#instrumentList").prepend("<tbody><tr><td scope='row'>" + "1"
+							+ "</td><td>" + InstrumentId
+							+ "</td><td>" + thisInstrument.Model
+							+ "</td><td>" + thisInstrument.SerialNo
+							+ "</td><td>" + thisInstrument.Category
+							+ "</td><td><a class='modal-link btn btn-success' href='/MyPanel/EditInstrument?instrumentId=" + InstrumentId + "'>ویرایش</a>"
+							+ "</td><td><a class='btn btn-danger' href='/MyPanel/DeleteInstrument?insrumentId=" + InstrumentId + "'>حذف</a>"
+							+ "</td></tr>");
+					}
+
+
+					$("#editInstrument").addClass("DisplayNone");
+
+					// var reloadTable = function (employees) {
+					//	var table = $('#employeesTable');
+					//	table.find("tbody tr").remove();
+					//	employees.forEach(function (employee) {
+					//		table.append("<tr><td>" + employee.id + "</td><td>" + employee.name + "</td></tr>");
+					//	});
+					//};
+
+
+				} else {
+					$("#instrumentErrorsEdit ul").append(response.responseText);
+					$("#instrumentErrorsEdit").removeClass("DisplayNone");
+					alert(response.responseText);
+				}
+			},
+			error: function (data) {
+				console.log('error');
+			}
+		});
+	});
+	
 })(jQuery);
 //this is a file containing main javascript

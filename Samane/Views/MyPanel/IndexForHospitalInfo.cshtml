@@ -11,7 +11,7 @@
         margin: 30px auto !important;
     }
 </style>
-
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
 <div class="wrapper wrapper-hospital">
     <div class="inner inner-hospital">
         <div class="container">
@@ -27,6 +27,7 @@
                 <div id="HospitalInfo" class="tab-pane fade in active">
                     <h3>اطلاعات بیمارستانی</h3>
                     <p>
+                        <div id="output"></div>
                         @* @Html.ActionLink("تغییر اطلاعات شخصی", "EditHopitalInfo", "MyPanel", null, new { @class = "modal-link btn btn-success" })*@
                         <input type="button" value="تغییر اطلاعات بیمارستان" class="btn btn-success" id="Open_HospitalEdit" />
                         <div id="ChangeHospitalInfoDiv" class="DisplayNone row panelMain">
@@ -88,26 +89,22 @@
                             </div>
                         </div>
                         <table class="table-responsive table table-striped" id="MP_HopitalDisplayInfo">
-                            
+
                             <tr>
                                 <td class="td_header">  @Html.DisplayNameFor(model => model.hospital.HospitalName)</td>
-                                <td id = "HospitalNamelbl">@Html.DisplayFor(model => model.hospital.HospitalName)</td>
+                                <td id="HospitalNamelbl">@Html.DisplayFor(model => model.hospital.HospitalName)</td>
                             </tr>
                             <tr>
                                 <td class="td_header">  @Html.DisplayNameFor(model => model.hospital.InChargePerson)</td>
-                                <td id = "InChargePersonlbl">@Html.DisplayFor(model => model.hospital.InChargePerson)</td>
+                                <td id="InChargePersonlbl">@Html.DisplayFor(model => model.hospital.InChargePerson)</td>
                             </tr>
                             <tr>
-                                <td class="td_header">  @Html.DisplayNameFor(model => model.HospitalUser.NameAndLastName)</td>
-                                <td >@Html.DisplayFor(model => model.HospitalUser.NameAndLastName)</td>
+                                <td class="td_header">  @Html.DisplayNameFor(model => model.hospital.UserNamee)</td>
+                                <td>@Html.DisplayFor(model => model.hospital.UserNamee)</td>
                             </tr>
                             <tr>
-                                <td class="td_header">  @Html.DisplayNameFor(model => model.HospitalUser.UserName)</td>
-                                <td >@Html.DisplayFor(model => model.HospitalUser.UserName)</td>
-                            </tr>
-                            <tr>
-                                <td class="td_header">@Html.DisplayNameFor(model => model.HospitalUser.PhoneNumber)</td>
-                                <td id = "PhoneNumberlbl"> @Html.DisplayFor(model => model.HospitalUser.PhoneNumber)</td>
+                                <td class="td_header">@Html.DisplayNameFor(model => model.hospital.PhoneNumber)</td>
+                                <td id="PhoneNumberlbl"> @Html.DisplayFor(model => model.hospital.PhoneNumber)</td>
                             </tr>
                         </table>
 
@@ -127,6 +124,14 @@
                             <div class="form-horizontal">
                                 <h4>دستگاه جدید</h4>
                                 <hr />
+                                <div class="form-group">
+                                    <div class="col-md-10">
+                                        @Html.LabelFor(model => model.instrument.InstrumentId, new { htmlAttributes = new { @class = "form-control Inline_Block", title = "کد دستگاه", id = "lblInstrumentId" } })
+                                    </div>
+                                    <div class="col-md-2">
+
+                                    </div>
+                                </div>
                                 <div class="form-group">
 
                                     <div class="col-md-10">
@@ -160,13 +165,13 @@
                                 </div>
 
                                 @*<div class="form-group">
-                                        @Html.LabelFor(m => m.HospitalName, new { @class = "col-md-2 control-label" })
-                                        <div class="col-md-10">
+                        @Html.LabelFor(m => m.HospitalName, new { @class = "col-md-2 control-label" })
+                        <div class="col-md-10">
 
-                                            @Html.DropDownList("HospitalName", new SelectList(ViewBag.hospitalNamess, "Value", "Text"), "Select name of hospital", new { @class = "form-control" })
-                                            @Html.ValidationMessageFor(model => model.HospitalName, "", new { @class = "text-danger" })
-                                        </div>
-                                    </div>*@
+                            @Html.DropDownList("HospitalName", new SelectList(ViewBag.hospitalNamess, "Value", "Text"), "Select name of hospital", new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.HospitalName, "", new { @class = "text-danger" })
+                        </div>
+                    </div>*@
 
                                 @Html.HiddenFor(m => m.hospital.UserNamee)
 
@@ -179,6 +184,72 @@
                                     </div>
                                     <div class="button col-md-5">
                                         <button class="button" id="HPanel-addInstrument">
+                                            ثبت
+                                        </button>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="editInstrument" class="DisplayNone row">
+                        <div class="col-md-5 ErrorMessagePaddings">
+                            <div id="instrumentErrorsEdit" class="alert alert-danger DisplayNone" role="alert">
+                                <ul></ul>
+                            </div>
+                        </div>
+                        <div class="col-md-7">
+                            <div class="form-horizontal">
+                                <h4>Edit Instrument</h4>
+                                <hr />
+                                <div class="form-group">
+                                    <div class="col-md-10">
+                                        <input type="text" id="lbl_instrumentId" class="form-control Inline_Block" />
+                                    </div>
+                                    <div class="col-md-2">
+
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-md-10">
+                                        <input type="text" id="txtCategory_Edit" class="form-control Inline_Block" />
+                                        <input type="text" id="txtCategoryBefore_Edit" class="DisplayNone" />
+                                    </div>
+                                    <div class="col-md-2">
+
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-md-10">
+                                        <input type="text" id="txtModel_Edit" class="form-control Inline_Block" />
+                                        <input type="text" id="txtModelBefore_Edit"  class="DisplayNone" />
+                                    </div>
+                                    <div class="col-md-2">
+
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-md-10">
+                                        <input type="text" id="txtSerialNo_Edit" class="form-control Inline_Block" />
+                                        <input type="text" id="txtSerialNoBefore_Edit"  class="DisplayNone" />
+                                    </div>
+                                    <div class="col-md-2">
+
+                                    </div>
+                                </div>
+                               
+
+                                @Html.HiddenFor(m => m.hospital.UserNamee)
+
+                                <div class="form-group">
+
+                                    <div class="button col-md-5">
+                                        <button class="button" id="MPH_caneclEditInstrument">
+                                            انصراف
+                                        </button>
+                                    </div>
+                                    <div class="button col-md-5">
+                                        <button class="button" id="MPH-EditInstrument">
                                             ثبت
                                         </button>
                                     </div>
@@ -213,15 +284,16 @@
                                             <td> @instrumentItem.SerialNo </td>
                                             <td> @instrumentItem.Category </td>
                                             <td>
-                                                @Html.ActionLink("ویرایش", "EditInstrument", "MyPanel", new { instrumentId = instrumentItem.InstrumentId }, new { @class = "modal-link btn btn-success btn_Width_Height" })
+                                                @*@Html.ActionLink("ویرایش", "EditInstrument", "MyPanel", new { instrumentId = instrumentItem.InstrumentId }, new { @class = "modal-link btn btn-success btn_Width_Height" })
 
-                                                @*            <button id="Edit" data-bind="@instrumentItem.InstrumentId" class="btn btn-success">ویرایش</button>*@
+                                    <button id="Edit" data-bind="@instrumentItem.InstrumentId" class="btn btn-success">ویرایش</button>*@
+                                                <button id="MPH_EditRequestInstrument" data-bind="@instrumentItem.InstrumentId" class="btn btn-success">ویرایش</button>
                                             </td>
                                             <td>
                                                 @*@Html.Action("DeleteInstrument", "MyPanel", new { insrumentId = instrumentItem.InstrumentId } )*@
                                                 <button data-bind="@instrumentItem.InstrumentId" class="btn btn-danger btn_Width_Height HMP_DeleteInstrument">حذف</button>
                                                 @*@Html.ActionLink(linkText: "حذف", actionName: "DeleteInstrument", controllerName: "MyPanel", htmlAttributes: new { @class = "btn btn-danger" }, routeValues: new { insrumentId = instrumentItem.InstrumentId })*@
-</tr>
+                                        </tr>
                                     }
                                 </tbody>
                             </table>

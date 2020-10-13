@@ -220,6 +220,7 @@
     <Compile Include="Models\CustomValidations.cs" />
     <Compile Include="Models\Hospital.cs" />
     <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\IndexForEngineerViewModel.cs" />
     <Compile Include="Models\Instrument.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\IndexForHospitalInfoViewModel.cs" />
@@ -426,6 +427,7 @@
           <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
         </WebProjectProperties>
       </FlavorProperties>
+      <UserProperties content_4bootstrap_1min_1css_1map__JsonSchema="" />
     </VisualStudio>
   </ProjectExtensions>
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

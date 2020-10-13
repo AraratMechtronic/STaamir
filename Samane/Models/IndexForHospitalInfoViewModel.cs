@@ -35,7 +35,11 @@ namespace Samane.Models
                 GetHospitalInformation();
             }
         }
-
+        public IndexForHospitalInfoViewModel(string username = null)
+        {
+            GetHospitalInformation(username);
+            GetThisHospitalInstrument(this.hospital);
+        }
         public void GetHospitalInformation(string username = null)
         {
             if (username is null && applicationUserForHospitals.UserName is null)
@@ -52,10 +56,12 @@ namespace Samane.Models
                     .FirstOrDefault();
 
         }
+
         public List<Instrument> GetThisHospitalInstrument(Hospital thisHospital)
         {
             if (_hospital.instruments is null)
-                _hospital.instruments = SamanehDB.Instruments.Where(ins => ins.UserName == thisHospital.UserNamee).ToList();
+                GetHospitalInformation(username: thisHospital.UserNamee);
+                 //_hospital.instruments =SamanehDB.Instruments.Where(ins => ins.UserName == thisHospital.UserNamee).ToList();
             return _hospital.instruments;
         }
 
@@ -139,6 +145,12 @@ namespace Samane.Models
             return isDataChanged;
         }
 
+        public Instrument GetHospitalInstrument(int insturmentID)
+        {
+            if (this.hospital.instruments is null)
+                GetHospitalInformation();
+            return this.hospital.instruments.Where(i => i.InstrumentId == insturmentID).FirstOrDefault();
+        }
 
         //private Hospital GetHospitalInfo()
         //{

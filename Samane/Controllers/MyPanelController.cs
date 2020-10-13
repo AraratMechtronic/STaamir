@@ -11,6 +11,8 @@ using Microsoft.AspNet.Identity;
 using Samane.DbContext_Classes;
 using Samane.Models;
 
+using Newtonsoft.Json;
+
 namespace Samane.Controllers
 {
 
@@ -18,7 +20,7 @@ namespace Samane.Controllers
     {
         private SamaneDbContext db = new SamaneDbContext();
         private ApplicationDbContext Userdb = new ApplicationDbContext();
-        IndexForHospitalInfoViewModel indexForHospitalInfoViewModel = new IndexForHospitalInfoViewModel();
+        IndexForHospitalInfoViewModel indexForHospitalInfoViewModel;
         List<string> errorMessage = new List<string>();
 
         // GET: MyPanel
@@ -28,6 +30,8 @@ namespace Samane.Controllers
             var userforadmin = new ApplicationUser();
             var userforhospital = new ApplicationUserForHospitals();
             var userforengineer = new ApplicationUserForEngineers();
+
+            indexForHospitalInfoViewModel = new IndexForHospitalInfoViewModel(User.Identity.Name);
 
             if (User.IsInRole("AdminUser"))
             {
@@ -167,7 +171,7 @@ namespace Samane.Controllers
                 //            ,
                 responseText = indexForHospitalInfoViewModel.hospital.instruments.Last().InstrumentId
             }
-                       , JsonRequestBehavior.AllowGet); ;
+                       , JsonRequestBehavior.AllowGet);
         }
         public ActionResult EditHopitalInfo()
         {
@@ -194,7 +198,7 @@ namespace Samane.Controllers
             #endregion Checking Model state
 
             GetHospitalViewInformation();
-            thishospital.UserNamee = indexForHospitalInfoViewModel.HospitalUser.UserName;
+            thishospital.UserNamee = indexForHospitalInfoViewModel.hospital.UserNamee;
             thishospital.City = indexForHospitalInfoViewModel.hospital.City;
             thishospital.Province = indexForHospitalInfoViewModel.hospital.Province;
 
@@ -205,12 +209,12 @@ namespace Samane.Controllers
                 int result = db.SaveChanges();
                 if (result < 0)
                     return Json(new { success = false, responseText = "خطا در ثبت اطلاعات." }, JsonRequestBehavior.AllowGet);
-                else if(result==0)
+                else if (result == 0)
                     return Json(new { success = false, responseText = "تغییری در اطلاعات داده نشده است." }, JsonRequestBehavior.AllowGet);
             }
             //if saved successfully
             //GetHospitalViewInformation();
-            return Json(new{success = true,responseText = "T"} , JsonRequestBehavior.AllowGet); 
+            return Json(new { success = true, responseText = "T" }, JsonRequestBehavior.AllowGet);
         }
 
 
@@ -252,19 +256,29 @@ namespace Samane.Controllers
         public JsonResult DeleteInstrument(int insrumentId)
         {
             errorMessage = new List<string>();
-            if(indexForHospitalInfoViewModel.DeleteInstrument(insrumentId, out errorMessage))
+            if (indexForHospitalInfoViewModel.DeleteInstrument(insrumentId, out errorMessage))
                 return Json(new { success = true, responseText = "حذف انجام شد" }, JsonRequestBehavior.AllowGet);
             return Json(new { success = false, responseText = "تغییری در اطلاعات داده نشده است." }, JsonRequestBehavior.AllowGet);
         }
         public void GetHospitalViewInformation()
         {
-            indexForHospitalInfoViewModel = new IndexForHospitalInfoViewModel();
-            //if (indexForHospitalInfoViewModel.HospitalUser == null || indexForHospitalInfoViewModel.HospitalUser.UserName== null)
-            indexForHospitalInfoViewModel.HospitalUser = Userdb.Users.OfType<ApplicationUserForHospitals>()
-                                                                         .FirstOrDefault(u => u.UserName == User.Identity.Name);
+            //in this object generation we initiate object with hospital information
+            indexForHospitalInfoViewModel = new IndexForHospitalInfoViewModel(User.Identity.Name);
 
         }
 
+        public JsonResult GetHospitalInstrument(int instrumentId)
+        {
+            if (indexForHospitalInfoViewModel is null)
+            {
+                GetHospitalViewInformation();
+            }
+            Instrument inst = indexForHospitalInfoViewModel.hospital.instruments.Where(i => i.InstrumentId == 86).First();
+            inst.hospital = null;
+            string _responseText = JsonConvert.SerializeObject(inst, Formatting.Indented);
+            return Json(new { success = true, responseText = _responseText }, JsonRequestBehavior.AllowGet);
+            
+        }
         // GET: MyPanel/Details/5
         //public ActionResult Details(int? id)
         //{
@@ -365,6 +379,17 @@ namespace Samane.Controllers
 
         // Renders the partial view which will be shown in a modal
 
+        //protected override JsonResult Json(object data, string contentType, System.Text.Encoding contentEncoding, JsonRequestBehavior behavior)
+        //{
+        //    return new JsonResult()
+        //    {
+        //        Data = data,
+        //        ContentType = contentType,
+        //        ContentEncoding = contentEncoding,
+        //        JsonRequestBehavior = behavior,
+        //        MaxJsonLength = Int32.MaxValue
+        //    };
+        //}
         protected override void Dispose(bool disposing)
         {
             if (disposing)
