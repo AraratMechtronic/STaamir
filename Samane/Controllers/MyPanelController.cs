@@ -31,7 +31,7 @@ namespace Samane.Controllers
             var userforhospital = new ApplicationUserForHospitals();
             var userforengineer = new ApplicationUserForEngineers();
 
-            indexForHospitalInfoViewModel = new IndexForHospitalInfoViewModel(User.Identity.Name);
+            
 
             if (User.IsInRole("AdminUser"))
             {
@@ -41,7 +41,6 @@ namespace Samane.Controllers
             }
             else if (User.IsInRole("HospitalUsers"))
             {
-
                 ///new code is written here
                 ///in this code the Hospital information including instruments is loaded
                 GetHospitalViewInformation();
