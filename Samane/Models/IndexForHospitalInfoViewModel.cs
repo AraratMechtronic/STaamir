@@ -12,7 +12,7 @@ namespace Samane.Models
     public class IndexForHospitalInfoViewModel
     {
      
-        SamaneDbContext SamanehDB = new SamaneDbContext();
+        private SamaneDbContext SamanehDB = new SamaneDbContext();
         private ApplicationUserForHospitals applicationUserForHospitals = new ApplicationUserForHospitals();
         private Hospital _hospital = new Hospital();
         public Instrument instrument = new Instrument();
@@ -48,6 +48,8 @@ namespace Samane.Models
             string _username = (applicationUserForHospitals.UserName != null) 
                                 ? applicationUserForHospitals.UserName
                                 : username;
+            if (applicationUserForHospitals.UserName is null)
+                applicationUserForHospitals.UserName = _username;
 
             if (this._hospital.UserNamee == null)
                 this._hospital = SamanehDB.Hospitals

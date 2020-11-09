@@ -255,6 +255,8 @@ namespace Samane.Controllers
 
         public JsonResult DeleteInstrument(int insrumentId)
         {
+            GetHospitalViewInformation();
+
             errorMessage = new List<string>();
             if (indexForHospitalInfoViewModel.DeleteInstrument(insrumentId, out errorMessage))
                 return Json(new { success = true, responseText = "حذف انجام شد" }, JsonRequestBehavior.AllowGet);
