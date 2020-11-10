@@ -253,6 +253,9 @@
     <Content Include="images\admin-inner-1.jpg" />
     <Content Include="images\bg-01.jpg" />
     <Content Include="images\bg-registration-form-4.jpg" />
+    <Content Include="images\delete-1.jpg" />
+    <Content Include="images\detail-1.jpg" />
+    <Content Include="images\edit-1.jpg" />
     <Content Include="images\engineer-1.jpg" />
     <Content Include="images\engineer-inner-2.jpg" />
     <Content Include="images\footer-logo.png" />
