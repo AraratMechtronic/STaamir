@@ -14,6 +14,7 @@ namespace Samane.DbContext_Classes
         {
             this.Configuration.LazyLoadingEnabled = false;
             //Database.SetInitializer<SamaneDbContext>(new DropCreateDatabaseAlways<SamaneDbContext>());
+           
         }
 
         public DbSet<Hospital> Hospitals { get; set; }

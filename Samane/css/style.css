@@ -20,6 +20,12 @@
     --form-background-color: white;
     --main-text-color: #777;
 }
+.text-success{
+    text-align: center;
+    padding: 5px;
+
+
+}
 
 @font-face {
     font-family: Samim-Regular;
@@ -281,6 +287,16 @@ h2, h3 {
     margin-bottom: 27px;
     color: var(--themes-main-color);
 }
+.padding {
+    padding: 20px;
+    margin: auto;
+}
+.acolor {
+    color: var(--themes-main-color);
+}
+.acolor :hover  {
+    color: var(--themes-main-color);
+}
 
 .form-holder {
     padding-right: 2px;
@@ -323,28 +339,28 @@ h2, h3 {
 
     .form-control::-webkit-input-placeholder {
         font-size: 13px;
-        color: #808080;
+        color: #777777;
         text-transform: uppercase;
         font-family: "Samim-Regular";
     }
 
     .form-control::-moz-placeholder {
         font-size: 13px;
-        color: #808080;
+        color: #777777;
         text-transform: uppercase;
         font-family: "Samim-Regular";
     }
 
     .form-control:-ms-input-placeholder {
         font-size: 13px;
-        color: #808080;
+        color: #777777;
         text-transform: uppercase;
         font-family: "Samim-Regular";
     }
 
     .form-control:-moz-placeholder {
         font-size: 13px;
-        color: #808080;
+        color: #777777;
         text-transform: uppercase;
         font-family: "Samim-Regular";
     }
@@ -437,7 +453,7 @@ h2, h3 {
     }
 }
 
-button, .butten {
+  .butten {
     letter-spacing: 2px;
     border: none;
     width: 133px;
@@ -460,7 +476,7 @@ button, .butten {
     box-shadow: 0 0 1px rgba(0, 0, 0, 0);
 }
 
-    button:hover {
+    /*button:hover {
         -webkit-animation-name: hvr-wobble-horizontal;
         animation-name: hvr-wobble-horizontal;
         -webkit-animation-duration: 1s;
@@ -469,7 +485,7 @@ button, .butten {
         animation-timing-function: ease-in-out;
         -webkit-animation-iteration-count: 1;
         animation-iteration-count: 1;
-    }
+    }*/
 
     .butten:hover {
         -webkit-animation-name: hvr-wobble-horizontal;
@@ -515,6 +531,10 @@ a {
     color: white;
     /*color: #999;*/
     transition: all 0.3s ease;
+}
+/*van*/
+a p {
+    color: #999999;
 }
 
     a:hover {
@@ -612,7 +632,8 @@ a {
         font-size: 80%;
     }
 
-    button, .butten {
+    .butten {
+        background-color: red;
         width: 100px;
         height: 36px;
         font-size: 80%;
@@ -621,7 +642,7 @@ a {
 
     .form-control::-webkit-input-placeholder {
         font-size: 9px;
-        color: #808080;
+        color: #777777;
         text-transform: uppercase;
         font-family: "Samim-Regular";
     }

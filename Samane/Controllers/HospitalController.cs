@@ -15,7 +15,7 @@ namespace Samane.Controllers
     public class HospitalController : Controller
     {
         private SamaneDbContext db = new SamaneDbContext();
-
+        private SamaneDbContext SamanehDB = new SamaneDbContext();
         // GET: Hospitals
         public ActionResult Index()
         {
@@ -28,14 +28,14 @@ namespace Samane.Controllers
         }
 
         // GET: Hospitals/Details/5
-        public ActionResult Details(string id)
+        public ActionResult Details(string hospitalName)
         {
-            if (id == null)
+            if (hospitalName == null)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                return View("index", db.Hospitals.ToList());
             }
 
-            var hospitalll = db.Hospitals.Include(a => a.instruments).SingleOrDefault(b => b.HospitalName==id);
+            var hospitalll = db.Hospitals.Include(a => a.instruments).SingleOrDefault(b => b.HospitalName== hospitalName);
             if (hospitalll == null)
                 return HttpNotFound();
             else
@@ -74,8 +74,9 @@ namespace Samane.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "HospitalName,Province,City,InChargePerson")] Hospital hospital)
+        public ActionResult Create([Bind(Include = "HospitalName,Province,City,InChargePerson,PhoneNumber")] Hospital hospital)
         {
+            hospital.UserNamee = User.Identity.Name;
             if (ModelState.IsValid)
             {
                 db.Hospitals.Add(hospital);
@@ -87,13 +88,15 @@ namespace Samane.Controllers
         }
 
         // GET: Hospitals/Edit/5
-        public ActionResult Edit(string id)
+        public ActionResult Edit(string hospitalName)
         {
-            if (id == null)
+            if (hospitalName == null)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                return View("index", db.Hospitals.ToList());
             }
-            Hospital hospital = db.Hospitals.Find(id);
+
+            Hospital hospital = db.Hospitals.Where(hos => hos.HospitalName.Contains(hospitalName)).FirstOrDefault();
+            
             if (hospital == null)
             {
                 return HttpNotFound();
@@ -106,13 +109,17 @@ namespace Samane.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "HospitalName,Province,City,InChargePerson")] Hospital hospital)
+        //[Bind(Include = "HospitalName,Province,City,InChargePerson,PhoneNumber")]
+        public ActionResult Edit( Hospital hospital)
         {
+            //hospital.UserNamee = User.Identity.Name;      
+            //hospital.instruments= db.Hospitals.Include(m => m.instruments).FirstOrDefault(m => (m.UserNamee == hospital.UserNamee)).instruments;
             if (ModelState.IsValid)
             {
                 db.Entry(hospital).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                if(db.SaveChanges()>=0)
+                    return RedirectToAction("Index");
+                return View(hospital);
             }
             return View(hospital);
         }
@@ -125,7 +132,8 @@ namespace Samane.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Hospital hospital = db.Hospitals.Include(m => m.instruments).FirstOrDefault(m => (m.HospitalName == hospitalName && m.City == city)); if (hospital == null)
+            Hospital hospital = db.Hospitals.Include(m => m.instruments).FirstOrDefault(m => (m.HospitalName == hospitalName && m.City == city)); 
+            if (hospital == null)
             {
                 return HttpNotFound();
             }

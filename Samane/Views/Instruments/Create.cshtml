@@ -60,16 +60,16 @@
                     </div>
                 </div>
             </div>
-            <div class="form-login">
+            @*<div class="form-login">
                 <div class="button">
                     <button value="Create">
-                        @Html.ActionLink("ثبت", "Index")
-                        @*<input type="submit" value="Create" class="btn btn-default" />*@ @*please chek it*@
+                        <input type="submit" value="ثبت" class="butten" />
                     </button>
                 </div>
-                <button>
-                    @Html.ActionLink("بازگشت", "Index")
-                </button>
+            </div>*@
+            <div class="form-login">
+                <input type="submit" value="ثبت" class="butten" />
+                @Html.ActionLink("بازگشت", "Index", "Instruments", null, new { @class = "butten" })
             </div>
         }
     </div>
