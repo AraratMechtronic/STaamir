@@ -294,9 +294,10 @@ h2, h3 {
 .acolor {
     color: var(--themes-main-color);
 }
-.acolor :hover  {
-    color: var(--themes-main-color);
-}
+    .acolor:hover {
+        /*color: var(--themes-main-color);*/
+        color: red;
+    }
 
 .form-holder {
     padding-right: 2px;
@@ -936,14 +937,14 @@ th, td {
 }
 
 .column1 {
-    width: 15%;
+    width: 12%;
     padding-left: 40px;
     direction: rtl;
     text-align: right;
 }
 
 .column2 {
-    width: 15%;
+    width: 12%;
     direction: rtl;
     text-align: right;
 }
@@ -955,13 +956,18 @@ th, td {
 }
 
 .column4 {
-    width: 20%;
+    width: 16%;
     direction: rtl;
     text-align: right;
 }
 
 .column5 {
-    width: 30%;
+    width: 15%;
+    direction: rtl;
+    text-align: right;
+}
+.column6 {
+    width: 25%;
     direction: rtl;
     text-align: right;
 }
