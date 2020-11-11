@@ -235,10 +235,7 @@
     <Content Include="CheatCodes\AcountController seed user chest code.txt" />
     <Content Include="CheatCodes\Jquery Cheatcode.txt" />
     <Content Include="CheatCodes\MigrationCheatCodes.txt" />
-    <Content Include="Content\bootstrap-theme.css" />
-    <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
-    <Content Include="Content\bootstrap.min.css" />
     <Content Include="css\sortable-tables.min.css" />
     <Content Include="css\sortable-tables.min.js" />
     <Content Include="css\style.css" />
@@ -406,10 +403,6 @@
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
-    <Content Include="Content\bootstrap.min.css.map" />
-    <Content Include="Content\bootstrap.css.map" />
-    <Content Include="Content\bootstrap-theme.min.css.map" />
-    <Content Include="Content\bootstrap-theme.css.map" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
