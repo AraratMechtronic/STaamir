@@ -1,4 +1,4 @@
-/*:root {
+﻿/*:root {
     --body-padding-top: 100px;
     --body-padding-bottom: 20px;
     --body-padding-left: 15px;
@@ -70,7 +70,7 @@ body {
     font-size: 1.4rem;
     margin: 0;
     padding: 0;
-    background-color: #777;
+    background-color: var(--themes-main-color);
     direction: rtl;
     line-height: 1.4;
 }
@@ -634,7 +634,7 @@ a p {
     }
 
     .butten {
-        background-color: red;
+        background-color: var(--themes-main-color);
         width: 100px;
         height: 36px;
         font-size: 80%;
@@ -998,6 +998,103 @@ th, td {
 .table100-body {
     max-height: 585px;
     overflow: auto;
+}
+/*-----------------------------instrument in admin myapanel------------------*/
+@media (max-width: 992px) {
+    table, thead, tbody, th, .instrumentTable, .hospitalTabletd, tr {
+        display: block;
+        background-color: white;
+        text-align: center;
+    }
+
+        thead tr {
+            position: absolute;
+            top: -9999px;
+            left: -9999px;
+            color: white;
+        }
+
+    tr {
+        border: 1px solid #ccc;
+        color: white;
+    }
+
+    td {
+        border: none;
+        border-bottom: 1px solid #eee;
+        position: relative;
+        padding-left: 200px;
+        margin-left: 150px;
+    }
+
+        td:before {
+            position: absolute;
+            top: 12px;
+            left: 6px;
+            width: 200px;
+            padding-right: 40px;
+            white-space: nowrap;
+            margin-left: -150px;
+        }
+    /*-----------------------------instrument in admin myapanel------------------*/
+    .instrumentTable:nth-of-type(1):before {
+        content: "آیدی دستگاه";
+    }
+
+    .instrumentTable:nth-of-type(2):before {
+        content: "نام بیمارستان";
+    }
+
+    .instrumentTable:nth-of-type(3):before {
+        content: "نام کاربری";
+    }
+
+    .instrumentTable:nth-of-type(4):before {
+        content: "استان";
+    }
+
+    .instrumentTable:nth-of-type(5):before {
+        content: "شهر";
+    }
+
+    .instrumentTable:nth-of-type(6):before {
+        content: "کتگوری";
+    }
+
+    .instrumentTable:nth-of-type(7):before {
+        content: "مدل";
+    }
+
+    .instrumentTable:nth-of-type(8):before {
+        content: "شماره سریال";
+    }
+
+    .instrumentTable:nth-of-type(9):before {
+        content: "";
+    }
+    /*-----------------------------hospital in admin myapanel------------------*/
+    .hospitalTabletd:nth-of-type(1):before {
+        content: "استان";
+    }
+
+    .hospitalTabletd:nth-of-type(2):before {
+        content: "شهر";
+    }
+
+    .hospitalTabletd:nth-of-type(3):before {
+        content: "مسئول";
+    }
+
+    .hospitalTabletd:nth-of-type(4):before {
+        content: "نام بیمارستان";
+    }
+
+    .hospitalTabletd:nth-of-type(5):before {
+        content: "شماره موبایل";
+    }
+    .hospitalTabletd:nth-of-type(6):before {
+        content: "";
+    }
 }
 /*==================================================================
 [ Ver3 ]*/
