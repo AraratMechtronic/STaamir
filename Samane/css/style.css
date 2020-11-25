@@ -47,7 +47,10 @@
     font-family: "ElMessiri-SemiBold";
     src: url("../fonts/el_messiri/ElMessiri-SemiBold.ttf");
 }
-
+@font-face {
+    font-family: 'Mj_Beirut Light';
+    src: url('../fonts/Mj_Beirut Light.TTF') format('truetype');
+}
 @font-face {
     font-family: "Montserrat-Regular";
     src: url("../fonts/montserrat/Montserrat-Regular.ttf");
@@ -66,7 +69,7 @@
 
 body {
     font-family: "Samim-Regular";
-    color: #999;
+    color: #434053;
     font-size: 1.4rem;
     margin: 0;
     padding: 0;
@@ -113,7 +116,7 @@ body {
 
 p, h1, h2, h3, h4, h5, h6, ul {
     margin: 0;
-    font-family: Samim-Bold;
+    /*font-family: Samim-Bold;*/
 }
 
 img {
@@ -227,7 +230,8 @@ ul {
 }
 
 .inner-hospital {
-    background: url("../images/Untitled-2.jpg") repeat fixed center;
+    /*background: url("../images/Untitled-2.jpg") repeat fixed center;*/
+    background: url("../images/inner-hospital-bc.jpg") repeat fixed center;
 }
 
 .inner-engineer {
@@ -283,7 +287,8 @@ form {
 h2, h3 {
     font-size: 35px;
     /*text-align: center;*/
-    font-family: "ElMessiri-SemiBold";
+    font-family: "Mj_Beirut Light";
+    /*"ElMessiri-SemiBold";*/
     margin-bottom: 27px;
     color: var(--themes-main-color);
 }
@@ -340,14 +345,15 @@ h2, h3 {
 
     .form-control::-webkit-input-placeholder {
         font-size: 13px;
-        color: #777777;
+        color: #4a4a4a;
         text-transform: uppercase;
         font-family: "Samim-Regular";
+        margin: auto;
     }
 
     .form-control::-moz-placeholder {
         font-size: 13px;
-        color: #777777;
+        color: #777;
         text-transform: uppercase;
         font-family: "Samim-Regular";
     }
@@ -453,8 +459,14 @@ h2, h3 {
         transform: translateX(0);
     }
 }
-
-  .butten {
+.butten {
+    /*background-color: var(--themes-main-color);*/
+    /*width: 100px;
+    height: 36px;*/
+   
+   
+}
+.butten {
     letter-spacing: 2px;
     border: none;
     width: 133px;
@@ -471,7 +483,8 @@ h2, h3 {
     font-size: 13px;
     color: #fff;
     text-transform: uppercase;
-    font-family: "Samim-Regular";
+    font-family: "Mj_Beirut Light";
+    font-size: 100%;
     -webkit-transform: perspective(1px) translateZ(0);
     transform: perspective(1px) translateZ(0);
     box-shadow: 0 0 1px rgba(0, 0, 0, 0);
@@ -633,13 +646,7 @@ a p {
         font-size: 80%;
     }
 
-    .butten {
-        background-color: var(--themes-main-color);
-        width: 100px;
-        height: 36px;
-        font-size: 80%;
-        font-family: "Samim-Regular";
-    }
+
 
     .form-control::-webkit-input-placeholder {
         font-size: 9px;
@@ -726,8 +733,12 @@ a p {
 
 .footer_widgets {
     padding: 50px 0px 0px 0px;
+    color: white;
 }
-
+    .footer_widgets a {
+        padding: 50px 0px 0px 0px;
+        color: white;
+    }
 .f_contact_widget p {
     font-size: 14px;
     line-height: 26px;
@@ -740,12 +751,14 @@ a p {
     margin-bottom: 20px;
     direction: rtl;
     text-align: right;
+    color: white;
 }
 
 .footer-item {
     margin-bottom: 20px;
     direction: rtl;
     text-align: right;
+    color: white;
 }
 /*a {
     text-decoration: none;
@@ -1265,6 +1278,7 @@ th, td {
 
 .banner {
     margin: 0;
+    font-family:'A Arghavan';
     padding-bottom: 100px;
     background: url("../images/banner2.jpg");
     min-height: 150px;
@@ -1282,11 +1296,12 @@ th, td {
 .banner-text {
     text-align: center;
     position: absolute;
+    font-family: "ElMessiri-SemiBold";
     top: 50%;
     left: 25%;
     transform: translate(-50%, -50%);
     color: white;
-    font-size: 22px;
+    font-size: 32px;
     -webkit-animation-name: hvr-wobble-horizontal;
     animation-name: hvr-wobble-horizontal;
     -webkit-animation-duration: 10s;
