@@ -48,7 +48,7 @@
     src: url("../fonts/el_messiri/ElMessiri-SemiBold.ttf");
 }
 @font-face {
-    font-family: 'Mj_Beirut Light';
+    font-family: "Mj_Beirut Light";
     src: url('../fonts/Mj_Beirut Light.TTF') format('truetype');
 }
 @font-face {
@@ -235,11 +235,13 @@ ul {
 }
 
 .inner-engineer {
-    background: url("../images/engineer-inner-2.jpg") repeat fixed center;
+    /*background: url("../images/engineer-inner-2.jpg") repeat fixed center;*/
+    background: url("../images/inner-engine-bc.jpg") repeat fixed center;
 }
 
 .inner-admin {
-    background: url("../images/admin-inner-1.jpg") repeat fixed center;
+    /*background: url("../images/admin-inner-1.jpg") repeat fixed center;*/
+    background: url("../images/inner-admin-bc.jpg") repeat fixed center;
 }
 
 .inner-main {
@@ -276,9 +278,7 @@ form {
 
 .formfull {
     width: 100%;
-    padding-top: 37px;
-    padding-right: 15px; /*60van*/
-    padding-left: 15px;
+    padding: 37px 15px 0 15px;
 }
 /*es*/
 /*.formregister {
@@ -623,7 +623,7 @@ a p {
 
     .van {
         width: 100%;
-        padding: 0px 15px 70px;
+        /*padding: 0px 15px 70px;*/
         display: flex;
         flex-direction: column;
         align-items: stretch;
@@ -1188,7 +1188,7 @@ th, td {
 }
 
 .site-section {
-    padding: 4em 0;
+    /*padding: 2px 0;*/
     position: relative;
 }
 
@@ -1240,9 +1240,76 @@ th, td {
 
 .marginauto {
     margin: auto;
-    padding: 30px;
+    padding: 15px 30px;
+}
+/*----------counter in home page----------------*/
+.counter-section {
+    text-align: center;
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+}
+.icon-box {
+    border: 1px solid #777;
+    height: 100px;
+    width: 100px;
+    margin: 20px auto;
+    transform: rotate(45deg);
+}
+.facount {
+    font-size: 40px;
+    margin: 25px;
+    color: white;
+    /*transform: rotate(-45deg);*/
 }
 
+
+.counters {
+    background: #777777;
+    color: white;
+    padding: 40px 5px;
+    border-top: 3px #c9c8d7 solid;
+}
+    .counters .countcontainer {
+        display: grid;
+        grid-gap: 45px;
+        grid-template-columns: repeat(4, 1fr);
+        text-align: center;
+    }
+.countcontainer h4 {
+    color: white;
+    font-size: 20px;
+    font-family: "Mj_Beirut Light";
+}
+.counters i {
+    margin-bottom: 5px;
+}
+.counters .counter {
+    font-size: 45px;
+    margin: 10px 0;
+}
+
+@media (max-width: 700px) {
+    .counters .countcontainer {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+        .counters i {
+            font-size: 25px;
+        }
+
+    .counters .counter {
+            font-size: 27px;
+        }
+        .counters h4 {
+            font-size: 15px;
+        }
+        .counters .countcontainer > div:nth-of-type(1), .counters .countcontainer > div:nth-of-type(2) {
+            border-bottom: 1px yellow solid;
+            padding-bottom: 20px;
+        }
+    }
+/*----------------end of counter----------------------*/
 .oneline {
     width: 80%;
     /*display: flex;
