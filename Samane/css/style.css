@@ -1243,32 +1243,33 @@ th, td {
     padding: 15px 30px;
 }
 /*----------counter in home page----------------*/
-.counter-section {
+/*.counter-section {
     text-align: center;
     display: flex;
     flex-wrap: nowrap;
     justify-content: space-between;
-}
-.icon-box {
+}*/
+/*.icon-box {
     border: 1px solid #777;
     height: 100px;
     width: 100px;
     margin: 20px auto;
     transform: rotate(45deg);
-}
+}*/
 .facount {
-    font-size: 40px;
+    font-size: 30px;
     margin: 25px;
-    color: white;
+    color: #777777;
     /*transform: rotate(-45deg);*/
 }
 
 
 .counters {
-    background: #777777;
-    color: white;
-    padding: 40px 5px;
+    background: white;
+    color: #777777;
+    padding: 10px 5px;
     border-top: 3px #c9c8d7 solid;
+    border-bottom: 3px #c9c8d7 solid;
 }
     .counters .countcontainer {
         display: grid;
@@ -1277,15 +1278,16 @@ th, td {
         text-align: center;
     }
 .countcontainer h4 {
-    color: white;
-    font-size: 20px;
+    color: #777777;
+    font-size: 15px;
     font-family: "Mj_Beirut Light";
+    padding-bottom: 20px;
 }
 .counters i {
     margin-bottom: 5px;
 }
 .counters .counter {
-    font-size: 45px;
+    font-size: 35px;
     margin: 10px 0;
 }
 
@@ -1305,7 +1307,7 @@ th, td {
             font-size: 15px;
         }
         .counters .countcontainer > div:nth-of-type(1), .counters .countcontainer > div:nth-of-type(2) {
-            border-bottom: 1px yellow solid;
+            border-bottom: 1px #777777 solid;
             padding-bottom: 20px;
         }
     }
