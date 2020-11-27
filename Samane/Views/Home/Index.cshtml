@@ -1,4 +1,8 @@
-﻿@{
+﻿@*alaki ye midel baraye sabtename online*@
+@using Samane.RepositoriesForAuthentication
+@model Samane.Models.HospitalUserRegisterViewModel
+
+@{
     ViewBag.Title = "Home Page";
 }
 
@@ -98,21 +102,47 @@
                         </div>
                         <div class="col-lg-4 ml-auto centerindexp" data-aos="fade-up" data-aos-delay="200">
                             <h2 class="text-black mb-4 centertext">مشاوره وعیب یابی دستگاه به صورت آنلاین</h2>
-                            <p class="mb-4">جهت سهولت کار و تسریع در فرایند تعمیر، با یک تماس ویدئویی از مهندس های ما مشورت بگیرید با وارد کردن  نوع دستگاه و شماره آیدی ویدئویی خود در اسرع وقت مهندس  مربوطه با شما تماس میگیرد...</p>
+                            <p class="mb-4">جهت سهولت کار و تسریع در فرایند تعمیر، با ثبت  نوع دستگاه و شماره موبایل با قابلیت تماس ویدئویی (واتس آپ/اسکایپ) ، در اسرع وقت مهندسین مربوطه با شما تماس گرفته و مشاوره های لازم انجام میشود....</p>
                             <div class="form-login">
-                                <input type="submit" class="butten" value="مشاوره آنلاین" />
-                                @*<button>مشاوره آنلاین</button>*@
-                            </div>
-                            @*<div class="d-flex align-items-center custom-icon-wrap mb-3">
-                                    <span class="custom-icon-inner mr-3"><span class="icon icon-graduation-cap"></span></span>
-                                    <div><h3 class="m-0">22,931 Yearly Graduates</h3></div>
+                                @*<input type="submit" class="butten" value="مشاوره آنلاین" />*@
+                                @*<a href="~/Home/Index/#online-section" class="butten">مشاوره آنلاین</a>*@
+                                @*<a href="javascript:unhide('online-section')" class="butten">مشاوره آنلاین</a><br><br>*@
+                                <input id="line" type="button" class="butten unhidden" onclick="unhide(this, 'online') " value="مشاوره آنلاین">
+
+                                <div id="online" class="hidden">
+                                    <div class="content3">
+                                        @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "test", role = "form" }))
+                                        {
+                                            @Html.AntiForgeryToken()
+                                            <div class="">
+                                                @Html.ValidationSummary(false, "پر کردن فیلدها الزامی است", new { @class = "text-danger" })
+                                                <div class="form-holder active">
+
+                                                    @Html.EditorFor(model => model.HospitalName, new { htmlAttributes = new { @class = "form-control", placeholder = "نام دستگاه", title = "نام دستگاه" } })
+                                                </div>
+
+                                                <div class="form-holder">
+                                                    @Html.EditorFor(model => model.NameAndLastName, new { htmlAttributes = new { @class = "form-control", placeholder = "شماره موبایل", title = "شماره موبایل" } })
+                                                </div>
+
+                                                <div class="form-holder">
+                                                    @Html.EditorFor(model => model.NameAndLastName, new { htmlAttributes = new { @class = "form-control", placeholder = "نام و نام خانوادگی", title = "نام و نام خانوادگی" } })
+                                                </div>
+
+                                            </div>
+
+                                            <div class="form-login">
+                                                <input type="submit" value="ثبت" class="butten" />
+                                                @*<input type="button" class="butten" onclick="unhide(this, 'online') " value="انصراف">*@
+                                            </div>
+
+                                        }
+                                    </div>
                                 </div>
 
-                                <div class="d-flex align-items-center custom-icon-wrap">
-                                    <span class="custom-icon-inner mr-3"><span class="icon icon-university"></span></span>
-                                    <div><h3 class="m-0">150 Universities Worldwide</h3></div>
-                                </div>*@
 
+                                @*<button>مشاوره آنلاین</button>*@
+                            </div>
                         </div>
                     </div>
 
@@ -121,11 +151,7 @@
                             <h2 class="text-black mb-4 centertext">راهنمای استفاده از سایت</h2>
                             <p class="mb-4">جهت دریافت فایل آموزشی استفاده از نرم افزار و سایت لطفا دکمه دریافت فایل پی دی اف را بزنیدولی در صورت بروز سوال پشتیبانان ما در خدمت شما هستند. </p>
                             <div class="form-login">
-                                <input type="submit" class="butten" value="دریافت راهنما" />
-                                @*  <button></button>*@
-                                @*<iframe src="../../test.pdf" width="100%" height="100%"></iframe>
-                                    <iframe src="@Url.Action("GetPDF")" width="90%" height="90%">
-                                    </iframe>*@
+                                <a href="~/pdf/rahnama.pdf" class="butten">دریافت راهنما</a>
                             </div>
 
                             @*<div class="d-flex align-items-center custom-icon-wrap mb-3">
@@ -200,13 +226,13 @@
                                 </div>
                             </section>
                             @*<div class="row text-center">
-                                <div class="col-md-3 counter-box">
-                                    <div class="icon-box"><i class="fa fa-user-plus facount"></i></div>
-                                    <p class="counter">1500</p>
-                                    <p>count of users</p>
+                                    <div class="col-md-3 counter-box">
+                                        <div class="icon-box"><i class="fa fa-user-plus facount"></i></div>
+                                        <p class="counter">1500</p>
+                                        <p>count of users</p>
 
-                                </div>
-                            </div>*@
+                                    </div>
+                                </div>*@
                         </div>
                     </div>
                 </div>
@@ -263,6 +289,42 @@
                     </div>
                 </div>
             </div>
+
+
+            @*<style>
+                    .hidden {
+                        display: none;
+                    }
+
+                    .unhidden {
+                        display: block;
+                    }
+                </style>*@
+            @*<script type="text/javascript">
+                    function unhide(clickedButton, divID) {
+                        var item = document.getElementById(divID);
+                        if (item) {
+                            if (item.className == 'hidden') {
+                                item.className = 'unhidden';
+                                clickedButton.value = 'ثبت'
+                            } else {
+                                item.className = 'hidden';
+                                clickedButton.value = 'unhide'
+                            }
+                        }
+                    }
+
+                </script>*@
+
+            @*<body>
+                <div id="about" class="hidden">
+                    <div class="content3">
+                        <p>This is the about section.</p>
+                        <p>It is currently still being worked on.</p>
+                    </div>
+                </div>
+                <input type="button" onclick="unhide(this, 'about') " value="unhide">
+            </body>*@
         </div>
     </div>
 </div>
@@ -284,10 +346,27 @@
 
 <script src="~/js/mains.js"></script>
 
-<script type="text/javascript">
-    function ShowPDF() {
-        var myFilepath = document.getElementById('myFilepath');
-        window.open(myFilepath.value, 'SalesReport', "resizable=yes,scrollbars=yes,status=yes", 465, 255);
-    }
-</script>
+@*<script type="text/javascript">
+        function unhide(divID) {
+            var item = document.getElementById(divID);
+            if (item) {
+                item.className = (item.className == 'hidden') ? 'unhidden' : 'hidden';
+            }
+        }
+    </script>*@
 
+<script type="text/javascript">
+    function unhide(clickedButton, divID) {
+        var item = document.getElementById(divID);
+        if (item) {
+            if (item.className == 'hidden') {
+                item.className = 'unhidden';
+                clickedButton.value = 'انصراف'
+            } else {
+                item.className = 'hidden';
+                clickedButton.value = 'مشاوره آنلاین'
+            }
+        }
+    }
+
+</script>
