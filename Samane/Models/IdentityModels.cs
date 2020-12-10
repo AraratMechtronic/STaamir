@@ -73,7 +73,7 @@ namespace Samane.Models
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         public ApplicationDbContext()
-            : base("SamaneConnection", throwIfV1Schema: false)
+            : base("SamaneDbWithCityConnectionString", throwIfV1Schema: false)
         {
         }
 

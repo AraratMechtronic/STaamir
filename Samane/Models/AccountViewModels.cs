@@ -2,6 +2,8 @@
 using Samane.RepositoriesForAuthentication;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Web.Mvc;
+using CompareAttribute = System.ComponentModel.DataAnnotations.CompareAttribute;
 
 namespace Samane.Models
 {
@@ -114,7 +116,7 @@ namespace Samane.Models
 
         [DataType(DataType.Password)]
         [Display(Name = "تکرار رمز عبور")]
-        [Compare("Password", ErrorMessage = "تکرار کلمه عبور معتبر نیست")]
+        [System.Web.Mvc.Compare("Password", ErrorMessage = "تکرار کلمه عبور معتبر نیست")]
         public string ConfirmPassword { get; set; }
 
         [Required(ErrorMessage = "شماره تلفن همراه را وارد نمایید")]
@@ -191,4 +193,11 @@ namespace Samane.Models
         [Display(Name = "Email")]
         public string Email { get; set; }
     }
+
+    //public class CityEventViewModel
+    //{
+    //    public List<SelectListItem> RelatedCity { get; set; }
+
+    //    public bool cityEvent { get; set; }
+    //}
 }

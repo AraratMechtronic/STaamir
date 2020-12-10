@@ -8,7 +8,7 @@ using System.Data.Entity.Migrations;
 
 namespace Samane.DbContext_Classes
 {
-    public class SamaneDbContextInitializerForModelChange : DropCreateDatabaseIfModelChanges<SamaneDbContext>
+    public class SamaneDbContextInitializerForModelChange : CreateDatabaseIfNotExists<SamaneDbContext>
     {
 
 

@@ -42,9 +42,11 @@
 
             </div>
             <div class="form-login">
-                    <input type="submit" value="Delete" class="butten" />
-                    @*@Html.ActionLink("حذف", "Index", new { id = Model.HospitalName })*@
+                <button>
+                    @*<input type="submit" value="Delete" class="btn btn-default" />*@
+                    @Html.ActionLink("حذف", "Index", new { id = Model.HospitalName })
                     @*@Html.ActionLink("حذف", "Index")*@
+                </button>
 
             </div>
             @*@using (Html.BeginForm())

@@ -10,16 +10,16 @@ namespace Samane.DbContext_Classes
     public class SamaneDbContext : DbContext
     {
 
-        public SamaneDbContext() : base ("SamaneConnection")
+        public SamaneDbContext() : base ("SamaneDbWithCityConnectionString")
         {
             this.Configuration.LazyLoadingEnabled = false;
             //Database.SetInitializer<SamaneDbContext>(new DropCreateDatabaseAlways<SamaneDbContext>());
-           
         }
 
         public DbSet<Hospital> Hospitals { get; set; }
 
         public DbSet<Instrument> Instruments { get; set; }
+
 
     }
 }

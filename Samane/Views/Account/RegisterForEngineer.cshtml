@@ -10,27 +10,26 @@
 <div class="wrapper wrapper-engineer">
     <div class="inner inner-engineer">
         <div class="image-holder">
-            <img src="~/images/registerforengineer.jpg" alt="">
+            <img src="~/images/engineer-1.jpg" alt="">
         </div>
             @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "", role = "form" }))
             {
                 @Html.AntiForgeryToken()
                 <h2>ثبت نام کاربر تعمیرکار</h2>
                 <div class="resize">
-                    @Html.ValidationSummary(false, "پر کردن فیلدها الزامی است", new { @class = "text-danger" })
+                    @Html.ValidationSummary(false, "پر کردن فیلدهای * الزامی است", new { @class = "text-danger" })
                     <div class="form-holder active">
                         @* @Html.LabelFor(m => m.ExpertInInstruments, new { @class = "col-md-2 control-" })*@
                         @*<div class="col-md-10">*@
-                       @*@Html.ValidationMessage("ExpertInInstruments", "", new { @class = "text-danger" })*@
+                        @Html.ValidationMessage("ExpertInInstruments", "", new { @class = "text-danger" })
                         @Html.EnumDropDownListFor(m => m.ExpertInInstruments, "select section", new { @class = "form-control", placeholder = "متخصص دستگاه", title = "متخصص دستگاه" })
                         @*@Html.ValidationMessageFor(model => model.ExpertInInstruments, "*", new { @class = "text-danger" })*@
                     </div>
 
-
                     <div class="form-holder">
                         @*@Html.LabelFor(model => model.YearsOfWork, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">*@
-                        @*@Html.ValidationMessage("YearsOfWork", "", new { @class = "text-danger" })*@
+                        @Html.ValidationMessage("YearsOfWork", "", new { @class = "text-danger" })
                         @Html.EditorFor(model => model.YearsOfWork, new { htmlAttributes = new { @class = "form-control", placeholder = "سنوات", title = "سنوات" } })
                         @*@Html.ValidationMessageFor(model => model.YearsOfWork, "*", new { @class = "text-danger" })*@
                     </div>
@@ -38,37 +37,33 @@
                     <div class="form-holder">
                         @*@Html.LabelFor(model => model.NameAndLastName, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">*@
-                        @*@Html.ValidationMessage("NameAndLastName", "", new { @class = "text-danger" })*@
+                        @Html.ValidationMessage("NameAndLastName", "", new { @class = "text-danger" })
                         @Html.EditorFor(model => model.NameAndLastName, new { htmlAttributes = new { @class = "form-control", placeholder = "نام و نام خانوادگی", title = "نام و نام خانوادگی" } })
                         @* @Html.ValidationMessageFor(model => model.NameAndLastName, "*", new { @class = "text-danger" })*@
                     </div>
 
                     <div class="form-holder">
-                        @*@Html.LabelFor(model => model.Province, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">*@
-                        @*@Html.ValidationMessage("Province", "", new { @class = "text-danger" })*@
-                        @Html.EditorFor(model => model.Province, new { htmlAttributes = new { @class = "form-control", placeholder = "استان", title = "استان" } })
-                        @*  @Html.ValidationMessageFor(model => model.Province, "*", new { @class = "text-danger" })*@
+                        @Html.ValidationMessage("Province", "", new { @class = "text-danger" })
+                        @*@Html.LabelFor(m => m.userCategory, new { @class = "col-md-2 control-label" })*@
+                        @Html.DropDownListFor(m => m.Province, (List<SelectListItem>)ViewBag.Provinc, " استان خود را انتخاب نمایید", new { id = "statedropdown", onchange = "getstatename();", @class = "form-control" })
                     </div>
 
                     <div class="form-holder">
-                        @*@Html.LabelFor(model => model.City, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">*@
-                        @*@Html.ValidationMessage("City", "", new { @class = "text-danger" })*@
-                        @Html.EditorFor(model => model.City, new { htmlAttributes = new { @class = "form-control", placeholder = "شهر", title = "شهر" } })
-                        @*@Html.ValidationMessageFor(model => model.City, "*", new { @class = "text-danger" })*@
+                        @Html.ValidationMessage("City", "", new { @class = "text-danger" })
+                        @Html.DropDownListFor(m => m.City, (List<SelectListItem>)ViewBag.Cities, " شهر خود را انتخاب نمایید", new { id = "citydropdown", onchange = "getcityname();", @class = "form-control" })
                     </div>
+
                     <div class="form-holder">
                         @*@Html.LabelFor(model => model.PhoneNumberr, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">*@
-                        @*@Html.ValidationMessage("PhoneNumberr", "", new { @class = "text-danger" })*@
+                        @Html.ValidationMessage("PhoneNumberr", "", new { @class = "text-danger" })
                         @Html.EditorFor(model => model.PhoneNumberr, new { htmlAttributes = new { @class = "form-control", placeholder = "شماره همراه", title = "شماره همراه" } })
                         @* @Html.ValidationMessageFor(model => model.PhoneNumberr, "*", new { @class = "text-danger" })*@
                     </div>
                     <div class="form-holder">
                         @*@Html.LabelFor(model => model.UserNamee, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">*@
-                        @*@Html.ValidationMessage("UserNamee", "", new { @class = "text-danger" })*@
+                        @Html.ValidationMessage("UserNamee", "", new { @class = "text-danger" })
                         @Html.EditorFor(model => model.UserNamee, new { htmlAttributes = new { @class = "form-control", placeholder = "ایمیل کاربر", title = "ایمیل کاربر" } })
                         @*  @Html.ValidationMessageFor(model => model.UserNamee, "*", new { @class = "text-danger" })*@
                     </div>
@@ -76,7 +71,7 @@
                     <div class="form-holder">
                         @*@Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">*@
-                        @*@Html.ValidationMessage("Password", "", new { @class = "text-danger" })*@
+                        @Html.ValidationMessage("Password", "", new { @class = "text-danger" })
                         @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control", placeholder = "رمز عبور", title = "رمز عبور" } })
                         @* @Html.ValidationMessageFor(model => model.Password, "*", new { @class = "text-danger" })*@
                     </div>
@@ -84,14 +79,21 @@
                     <div class="form-holder">
                         @*@Html.LabelFor(model => model.ConfirmPassword, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">*@
-                        @*@Html.ValidationMessage("ConfirmPassword", "", new { @class = "text-danger" })*@
+                        @Html.ValidationMessage("ConfirmPassword", "", new { @class = "text-danger" })
                         @Html.EditorFor(model => model.ConfirmPassword, new { htmlAttributes = new { @class = "form-control", placeholder = "تکرار رمز عبور", title = "تکرار رمز عبور" } })
                         @* @Html.ValidationMessageFor(model => model.ConfirmPassword, "", new { @class = "text-danger" })*@
                     </div>
 
                     <div class="form-login">
-                        <input type="submit" value="ثبت" class="butten" />
-                        @Html.ActionLink("بازگشت", "Authenticate", "Account", null, new { @class = "butten" })
+                        <div class="button">
+                            <button value="Create">
+                                ثبت
+                                @*<input type="submit" value="Create" class="butten" />*@ @*please chek it*@
+                            </button>
+                        </div>
+                        <button>
+                            @Html.ActionLink("بازگشت", "Authenticate")
+                        </button>
                     </div>
 
                 </div>

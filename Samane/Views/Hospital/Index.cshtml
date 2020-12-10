@@ -59,38 +59,32 @@
                                 <th class="cell100 column4">
                                     @Html.DisplayNameFor(model => model.HospitalName)
                                 </th>
-                                <th class="cell100 column5">
-                                    @Html.DisplayNameFor(model => model.PhoneNumber)
-                                </th>
-                                <th class="cell100 column6">وضعیت</th>
+                                <th class="cell100 column5">وضعیت</th>
                             </tr>
                         </thead>
                         <tbody>
                             @foreach (var item in Model)
                             {
 
-                            <tr>
-                                <td class="cell100 hospitalTabletd">
-                                    @Html.DisplayFor(modelItem => item.Province)
-                                </td>
-                                <td class="cell100 hospitalTabletd">
-                                    @Html.DisplayFor(modelItem => item.City)
-                                </td>
-                                <td class="cell100 hospitalTabletd">
-                                    @Html.DisplayFor(modelItem => item.InChargePerson)
-                                </td>
-                                <td class="cell100 hospitalTabletd">
-                                    @Html.DisplayFor(modelItem => item.HospitalName)
-                                </td>
-                                <td class="cell100 hospitalTabletd">
-                                    @Html.DisplayFor(modelItem => item.PhoneNumber)
-                                </td>
-                                <td class="cell100 hospitalTabletd">
-                                    @Html.ActionLink("Edit", "Edit", new { hospitalName = item.HospitalName, @class = "fa fa-user-plus" }) |
-                                    @Html.ActionLink("Details", "Details", new { hospitalName = item.HospitalName }) |
-                                    @Html.ActionLink("Delete", "Delete", new { hospitalName = item.HospitalName, city = item.City })
-                                </td>
-                            </tr>
+                                <tr>
+                                    <td class="cell100 column1">
+                                        @Html.DisplayFor(modelItem => item.Province)
+                                    </td>
+                                    <td class="cell100 column2">
+                                        @Html.DisplayFor(modelItem => item.City)
+                                    </td>
+                                    <td class="cell100 column3">
+                                        @Html.DisplayFor(modelItem => item.InChargePerson)
+                                    </td>
+                                    <td class="cell100 column4">
+                                        @Html.DisplayFor(modelItem => item.HospitalName)
+                                    </td>
+                                    <td class="cell100 column5">
+                                        @Html.ActionLink("Edit", "Edit", new { id = item.HospitalName, @class = "fa fa-user-plus" }) |
+                                        @Html.ActionLink("Details", "Details", new { id = item.HospitalName }) |
+                                        @Html.ActionLink("Delete", "Delete", new { hospitalName = item.HospitalName, city = item.City })
+                                    </td>
+                                </tr>
 
                             }
 
@@ -104,7 +98,9 @@
         </div>
 
         <div class="form-login">
-            @Html.ActionLink("بیمارستان جدید", "Create", "Hospital", null, new { @class = "butten" })
+            <button>
+                @Html.ActionLink("بیمارستان جدید", "Create")
+            </button>
         </div>
     </div>
 </div>

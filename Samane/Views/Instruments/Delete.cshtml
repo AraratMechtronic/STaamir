@@ -50,9 +50,11 @@
 
             </div>
             <div class="form-login">
-                    <input type="submit" value="Delete" class="butten" />
+                <button>
+                    @*<input type="submit" value="Delete" class="btn btn-default" />*@
                     @*@Html.ActionLink("حذف", "Index", new { id = Model.InstrumentId })*@
-                    @*@Html.ActionLink("حذف", "Index")*@
+                    @Html.ActionLink("حذف", "Index")
+                </button>
 
             </div>
         }

@@ -1,0 +1,10 @@
+﻿@model IEnumerable<SelectListItem>
+
+    <div>
+        @*@Html.DropDownList("City", new SelectList(new List<SelectListItem> { new SelectListItem { Value = "s", Text = "s" }, new SelectListItem { Value = "n", Text = "n" }, new SelectListItem { Value = "q", Text = "q" } }, "Value", "Text"), " شهر خود را انتخاب نمایید")*@      
+        @Html.DropDownList("City", new SelectList(Model, "Value", "Text"), " شهر خود را انتخاب نمایید")
+
+    </div>
+
+
+

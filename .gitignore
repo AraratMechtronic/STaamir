@@ -3,6 +3,8 @@
 ################################################################################
 
 /.vs/Samane/v16
-/Samane/App_Data
-/packages
-/Samane/bin
+/Samane/App_Data/
+/packages/
+/Samane/bin/
+/Samane/Properties/PublishProfiles
+/Samane/obj/

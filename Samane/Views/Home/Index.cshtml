@@ -1,18 +1,55 @@
-﻿@*alaki ye midel baraye sabtename online*@
-@using Samane.RepositoriesForAuthentication
-@model Samane.Models.HospitalUserRegisterViewModel
-
-@{
+﻿@{
     ViewBag.Title = "Home Page";
 }
+
+@*<div class="jumbotron">
+        <h1>ASP.NET</h1>
+        <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
+        <p><a href="https://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
+    </div>
+    <div class="eh">
+        <div class="row">
+            <div class="col-md-4">
+                <h2>Getting started</h2>
+                <p>
+                    ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
+                    enables a clean separation of concerns and gives you full control over markup
+                    for enjoyable, agile development.
+                </p>
+                <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
+            </div>
+            <div class="col-md-4">
+                <h2>Get more libraries</h2>
+                <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
+                <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
+            </div>
+            <div class="col-md-4">
+                <h2>Web Hosting</h2>
+                <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
+                <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
+            </div>
+        </div>
+    </div>*@
 
 
 @*<link href="https://fonts.googleapis.com/css?family=Muli:300,400,700,900" rel="stylesheet">*@
 @*<link rel="stylesheet" href="fonts/icomoon/style.css">*@
 
+@*<link rel="stylesheet" href="~/csss/bootstrap.min.css">*@
+@*<link rel="stylesheet" href="~/csss/jquery-ui.css">*@
+@*<link rel="stylesheet" href="~/csss/owl.carousel.min.css">
+    <link rel="stylesheet" href="~/csss/owl.theme.default.min.css">*@
+
+
+@*<link rel="stylesheet" href="~/csss/jquery.fancybox.min.css">*@
+
+@*<link rel="stylesheet" href="~/csss/bootstrap-datepicker.css">*@
+
 @*<link rel="stylesheet" href="~/fonts/flaticon/font/flaticon.css">*@
 
 <link rel="stylesheet" href="~/css/aos.css">
+
+@*<link rel="stylesheet" href="~/csss/style.css">*@
 
 
 <div class="site-wrap">
@@ -41,7 +78,7 @@
                             <div class="teacher text-center">
                                 <figure class="m-0">
                                     <a href="Home/Shopping">
-                                        <img src="~/images/shopping.jpg" alt="Image" class="img-fluid three">
+                                        <img src="~/images/sale2.jpg" alt="Image" class="img-fluid three">
                                     </a>
                                 </figure>
                                 <div class="py-2">
@@ -56,7 +93,7 @@
                             <div class="teacher text-center">
                                 <figure class="m-0">
                                     <a href="course-single.html">
-                                        <img src="~/images/software.jpg" alt="Image" class="img-fluid three">
+                                        <img src="~/images/software1.jpg" alt="Image" class="img-fluid three">
                                     </a>
                                 </figure>
                                 <div class="py-2">
@@ -71,15 +108,13 @@
                             <div class="teacher text-center">
                                 <figure class="m-0">
                                     <a href="/Account/Login">
-                                        <img src="~/images/repair.jpg" alt="Image" class="img-fluid three">
-                                    </a>
+                                        <img src="~/images/repair1.jpg" alt="Image" class="img-fluid three">
+            </a>
                                 </figure>
                                 <div class="py-2">
-                                    <a href="/Account/Login">
-                                        <h2 class="text-black">خدمات تعمیرات</h2>
-                                        @*<p class="position">Physics Teacher</p>*@
-                                        <p>تعمیرات دستگاه هاو مشاوره و ...</p>
-                                    </a>
+                                    <h2 class="text-black">خدمات تعمیرات</h2>
+                                    @*<p class="position">Physics Teacher</p>*@
+                                    <p>تعمیرات دستگاه هاو مشاوره و ...</p>
                                 </div>
                             </div>
                         </div>
@@ -98,60 +133,38 @@
                         </div>*@
                     <div class="row1 mb-5 align-items-center">
                         <div class="col-lg-7 mb-5" data-aos="fade-up" data-aos-delay="100">
-                            <img src="~/images/online1.jpg" alt="Image" class="img-fluid">
+                            <img src="~/images/undraw_youtube_tutorial.svg" alt="Image" class="img-fluid">
                         </div>
                         <div class="col-lg-4 ml-auto centerindexp" data-aos="fade-up" data-aos-delay="200">
                             <h2 class="text-black mb-4 centertext">مشاوره وعیب یابی دستگاه به صورت آنلاین</h2>
-                            <p class="mb-4">جهت سهولت کار و تسریع در فرایند تعمیر، با ثبت  نوع دستگاه و شماره موبایل با قابلیت تماس ویدئویی (واتس آپ/اسکایپ) ، در اسرع وقت مهندسین مربوطه با شما تماس گرفته و مشاوره های لازم انجام میشود....</p>
+                            <p class="mb-4">جهت سهولت کار و تسریع در فرایند تعمیر، با یک تماس ویدئویی از مهندس های ما مشورت بگیرید با وارد کردن  نوع دستگاه و شماره آیدی ویدئویی خود در اسرع وقت مهندس  مربوطه با شما تماس میگیرد...</p>
                             <div class="form-login">
-                                @*<input type="submit" class="butten" value="مشاوره آنلاین" />*@
-                                @*<a href="~/Home/Index/#online-section" class="butten">مشاوره آنلاین</a>*@
-                                @*<a href="javascript:unhide('online-section')" class="butten">مشاوره آنلاین</a><br><br>*@
-                                <input id="line" type="button" class="butten unhidden" onclick="unhide(this, 'online') " value="مشاوره آنلاین">
-
-                                <div id="online" class="hidden">
-                                    <div class="content3">
-                                        @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "test", role = "form" }))
-                                        {
-                                            @Html.AntiForgeryToken()
-                                            <div class="">
-                                                @Html.ValidationSummary(false, "پر کردن فیلدها الزامی است", new { @class = "text-danger" })
-                                                <div class="form-holder active">
-
-                                                    @Html.EditorFor(model => model.HospitalName, new { htmlAttributes = new { @class = "form-control", placeholder = "نام دستگاه", title = "نام دستگاه" } })
-                                                </div>
-
-                                                <div class="form-holder">
-                                                    @Html.EditorFor(model => model.NameAndLastName, new { htmlAttributes = new { @class = "form-control", placeholder = "شماره موبایل", title = "شماره موبایل" } })
-                                                </div>
-
-                                                <div class="form-holder">
-                                                    @Html.EditorFor(model => model.NameAndLastName, new { htmlAttributes = new { @class = "form-control", placeholder = "نام و نام خانوادگی", title = "نام و نام خانوادگی" } })
-                                                </div>
-
-                                            </div>
-
-                                            <div class="form-login">
-                                                <input type="submit" value="ثبت" class="butten" />
-                                                @*<input type="button" class="butten" onclick="unhide(this, 'online') " value="انصراف">*@
-                                            </div>
-
-                                        }
-                                    </div>
+                                @*<input type="submit" class="btn btn-default" value="مرحله بعد" />*@
+                                <button>مشاوره آنلاین</button>
+                            </div>
+                            @*<div class="d-flex align-items-center custom-icon-wrap mb-3">
+                                    <span class="custom-icon-inner mr-3"><span class="icon icon-graduation-cap"></span></span>
+                                    <div><h3 class="m-0">22,931 Yearly Graduates</h3></div>
                                 </div>
 
+                                <div class="d-flex align-items-center custom-icon-wrap">
+                                    <span class="custom-icon-inner mr-3"><span class="icon icon-university"></span></span>
+                                    <div><h3 class="m-0">150 Universities Worldwide</h3></div>
+                                </div>*@
 
-                                @*<button>مشاوره آنلاین</button>*@
-                            </div>
                         </div>
                     </div>
 
                     <div class="row1 mb-5 align-items-center">
                         <div class="col-lg-4 mr-auto order-2 order-lg-1 centerindexp" data-aos="fade-up" data-aos-delay="200">
                             <h2 class="text-black mb-4 centertext">راهنمای استفاده از سایت</h2>
-                            <p class="mb-4">جهت دریافت فایل آموزشی استفاده از نرم افزار و سایت لطفا دکمه دریافت فایل پی دی اف را بزنیدولی در صورت بروز سوال پشتیبانان ما در خدمت شما هستند. </p>
+                            <p class="mb-4">جهت دریافت فایل آموزشی استفاده از نرم افزار و سایت لطفا دکمه دریافت فایل پی دی اف را بزنیدولی در صورت بروز شوال پشتیبانان ما در خدمت شما هستند. </p>
                             <div class="form-login">
-                                <a href="~/pdf/rahnama.pdf" class="butten">دریافت راهنما</a>
+                                @*<input type="submit" class="btn btn-default" value="مرحله بعد" />*@
+                                <button>دریافت فایل راهنما</button>
+                                @*<iframe src="../../test.pdf" width="100%" height="100%"></iframe>
+                                <iframe src="@Url.Action("GetPDF")" width="90%" height="90%">
+                                </iframe>*@
                             </div>
 
                             @*<div class="d-flex align-items-center custom-icon-wrap mb-3">
@@ -173,7 +186,7 @@
 
                     <div class="row1 mb-5 align-items-center">
                         <div class="col-lg-7 mb-5" data-aos="fade-up" data-aos-delay="100">
-                            <img src="~/images/poshtiban1.jpg" alt="Image" class="img-fluid">
+                            <img src="~/images/undraw_teacher.svg" alt="Image" class="img-fluid">
                         </div>
                         <div class="col-lg-4 ml-auto centerindexp" data-aos="fade-up" data-aos-delay="200">
                             <h2 class="text-black mb-4 centertext">پشتیبانی</h2>
@@ -191,60 +204,10 @@
 
                         </div>
                     </div>
-                    <div class="about-section row1 mb-5 align-items-center" id="about-section">
-                        @*<div class="col-lg-7 mb-5" data-aos="fade-up" data-aos-delay="100">
-                                <img src="~/images/poshtiban1.jpg" alt="Image" class="img-fluid">
-                            </div>*@
-                        <div class="ml-auto centerindexp" data-aos="fade-up" data-aos-delay="200">
-                            <h2 class="text-black centertext">
-                                درباره ما
-                                <a href="@Url.Action("Index", "Home")"><img src="~/images/backtoup.png" />  </a>
-                            </h2>
-                            <p class="mb-4">با وجود آموزش های لازم در سایت، در صورت داشتن سوال، پشتیبانان ما در خدمت شما کاربران عزیز می باشند لطفا از قسمت ارتباط با ما و یا از طریق تلفن های ما با ما در ارتباط باشید.</p>
-                            <section class="counters">
-                                <div class="countcontainer">
-                                    <div>
-                                        <i class="fa fa-user-plus facount"></i>
-                                        <div class="counter" data-target="7000">0</div>
-                                        <h4>تعداد کل کاربران</h4>
-                                    </div>
-                                    <div>
-                                        <i class="fa fa-user-plus facount"></i>
-                                        <div class="counter" data-target="8000">0</div>
-                                        <h4>تعداد دستگاه های تعمیری</h4>
-                                    </div>
-                                    <div>
-                                        <i class="fa fa-user-plus facount facount"></i>
-                                        <div class="counter" data-target="4000">0</div>
-                                        <h4>تعداد بازدید</h4>
-                                    </div>
-                                    <div>
-                                        <i class="fa fa-user-plus facount"></i>
-                                        <div class="counter" data-target="5000">0</div>
-                                        <h4>تعداد ...</h4>
-                                    </div>
-                                </div>
-                            </section>
-                            @*<div class="row text-center">
-                                    <div class="col-md-3 counter-box">
-                                        <div class="icon-box"><i class="fa fa-user-plus facount"></i></div>
-                                        <p class="counter">1500</p>
-                                        <p>count of users</p>
 
-                                    </div>
-                                </div>*@
-                        </div>
-                    </div>
                 </div>
             </div>
-            @*<div class="row1 mb-5 justify-content-center">
-                    <div class="col-lg-7 mb-5 text-center" data-aos="fade-up" data-aos-delay="">
-                        <h2 class="text-black">خدمات ما</h2>
-                        <p class="mb-5">
-                            دسترسی راحت تر به امکانات ما از این طریق
-                        </p>
-                    </div>
-                </div>*@
+
             <div class="site-section inner inner-hospital bg-light" id="contact-section">
                 <div class="container">
 
@@ -269,7 +232,7 @@
 
                                         </div>
                                         <div class="form-group row">
-                                            <input type="tel" class="form-control" placeholder="شماره همراه">
+                                            <input type="number" class="form-control" placeholder="شماره همراه">
                                         </div>
                                     </div>
                                     <div class="van2">
@@ -282,49 +245,13 @@
 
                                 </div>
                                 <div class="form-login">
-                                    <input type="submit" class="butten" value="ثبت" />
+                                    <button>ثبت</button>
                                 </div>
                             </form>
                         </div>
                     </div>
                 </div>
             </div>
-
-
-            @*<style>
-                    .hidden {
-                        display: none;
-                    }
-
-                    .unhidden {
-                        display: block;
-                    }
-                </style>*@
-            @*<script type="text/javascript">
-                    function unhide(clickedButton, divID) {
-                        var item = document.getElementById(divID);
-                        if (item) {
-                            if (item.className == 'hidden') {
-                                item.className = 'unhidden';
-                                clickedButton.value = 'ثبت'
-                            } else {
-                                item.className = 'hidden';
-                                clickedButton.value = 'unhide'
-                            }
-                        }
-                    }
-
-                </script>*@
-
-            @*<body>
-                <div id="about" class="hidden">
-                    <div class="content3">
-                        <p>This is the about section.</p>
-                        <p>It is currently still being worked on.</p>
-                    </div>
-                </div>
-                <input type="button" onclick="unhide(this, 'about') " value="unhide">
-            </body>*@
         </div>
     </div>
 </div>
@@ -346,27 +273,9 @@
 
 <script src="~/js/mains.js"></script>
 
-@*<script type="text/javascript">
-        function unhide(divID) {
-            var item = document.getElementById(divID);
-            if (item) {
-                item.className = (item.className == 'hidden') ? 'unhidden' : 'hidden';
-            }
-        }
-    </script>*@
-
 <script type="text/javascript">
-    function unhide(clickedButton, divID) {
-        var item = document.getElementById(divID);
-        if (item) {
-            if (item.className == 'hidden') {
-                item.className = 'unhidden';
-                clickedButton.value = 'انصراف'
-            } else {
-                item.className = 'hidden';
-                clickedButton.value = 'مشاوره آنلاین'
-            }
-        }
+    function ShowPDF() {
+        var myFilepath = document.getElementById('myFilepath');
+        window.open(myFilepath.value, 'SalesReport', "resizable=yes,scrollbars=yes,status=yes", 465, 255);
     }
-
 </script>

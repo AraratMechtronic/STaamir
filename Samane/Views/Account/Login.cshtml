@@ -8,9 +8,7 @@
     <div class="wrapper wrapper-main">
         <div class="inner inner-main">
             <div class="image-holder">
-                <img class="" src="~/images/lab-login-image-1.jpg" alt="">
-                @*<img src="~/images/lab-login-image.jpg" />
-                <img src="~/images/lab-login-image-1.jpg" />*@
+                <img class="" src="~/images/signin-image.jpg" alt="">  
             </div>
                 @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
                 {
@@ -40,13 +38,15 @@
                                     @*@Html.CheckBoxFor(m => m.RememberMe)
                                     @Html.LabelFor(m => m.RememberMe)*@
                                     @Html.ActionLink("رمز عبور را فراموش کردی؟", "ForgotPassword", "Account")
-                                    @*@Html.ActionLink("تغییر رمز عبور", "ResetPassword", "Account")*@
+                                    @Html.ActionLink("تغییر رمز عبور", "ResetPassword", "Account")
                                 </div>
                             </div>
                         </div>
                         <div class="form-login">
-                            <input type="submit" value="ورود" class="butten" />
-                            @Html.ActionLink("ایجاد کاربر جدید", "Authenticate", "Account", null, new { @class = "butten" })
+                            @*<input type="submit" value="Log in" class="button" />*@
+                            <button>@Html.ActionLink("ایجاد کاربر جدید", "Authenticate", "Account")</button>
+                            <button>ورود</button>
+
                         </div>
                         @*<p>
                             @Html.ActionLink("Register as a new user", "Register")

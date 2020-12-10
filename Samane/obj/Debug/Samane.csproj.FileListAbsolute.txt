@@ -456,7 +456,6 @@ E:\Projects\AraratMechtronic\Samane\SamTaamir\Samane\bin\Microsoft.Owin.Security
 E:\Projects\AraratMechtronic\Samane\SamTaamir\Samane\bin\System.Diagnostics.DiagnosticSource.xml
 E:\Projects\AraratMechtronic\Samane\SamTaamir\Samane\bin\Microsoft.AspNet.TelemetryCorrelation.xml
 E:\Projects\AraratMechtronic\Samane\SamTaamir\Samane\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
-E:\Projects\AraratMechtronic\Samane\SamTaamir\Samane\obj\Debug\Samane.csprojAssemblyReference.cache
 E:\Projects\AraratMechtronic\Samane\SamTaamir\Samane\obj\Debug\Samane.Migrations.Identity.InitialIdentity.resources
 E:\Projects\AraratMechtronic\Samane\SamTaamir\Samane\obj\Debug\Samane.Migrations.Identity.AddPersianRoleName01.resources
 E:\Projects\AraratMechtronic\Samane\SamTaamir\Samane\obj\Debug\Samane.Migrations.SamaneDatabase.Initial.resources
@@ -465,3 +464,6 @@ E:\Projects\AraratMechtronic\Samane\SamTaamir\Samane\obj\Debug\Samane.csproj.Gen
 E:\Projects\AraratMechtronic\Samane\SamTaamir\Samane\obj\Debug\Samane.csproj.CopyComplete
 E:\Projects\AraratMechtronic\Samane\SamTaamir\Samane\obj\Debug\Samane.dll
 E:\Projects\AraratMechtronic\Samane\SamTaamir\Samane\obj\Debug\Samane.pdb
+E:\Projects\AraratMechtronic\Samane\SamTaamir\Samane\obj\Debug\Samane.Migrations.ApplicationDbContext.InitialIdentity.resources
+E:\Projects\AraratMechtronic\Samane\SamTaamir\Samane\obj\Debug\Samane.Migrations.SamaneDbContext.Initial.resources
+E:\Projects\AraratMechtronic\Samane\SamTaamir\Samane\obj\Debug\Samane.csprojAssemblyReference.cache

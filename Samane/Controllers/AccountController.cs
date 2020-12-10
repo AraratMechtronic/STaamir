@@ -20,7 +20,7 @@ namespace Samane.Controllers
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
         private ApplicationRoleManager _roleManager;
-
+        CityStateDbContext db = new CityStateDbContext();
         public AccountController()
         {
         }
@@ -51,9 +51,9 @@ namespace Samane.Controllers
             {
                 return _signInManager ?? HttpContext.GetOwinContext().Get<ApplicationSignInManager>();
             }
-            private set 
-            { 
-                _signInManager = value; 
+            private set
+            {
+                _signInManager = value;
             }
         }
 
@@ -90,7 +90,7 @@ namespace Samane.Controllers
             {
                 return View(model);
             }
-            
+
             // This doesn't count login failures towards account lockout
             // To enable password failures to trigger account lockout, change to shouldLockout: true
             var result = await SignInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, shouldLockout: false);
@@ -156,7 +156,7 @@ namespace Samane.Controllers
         public ActionResult Authenticate()
         {
 
-            List<SelectListItem> list = new List<SelectListItem>();
+            ///List<SelectListItem> list = new List<SelectListItem>();
             ViewBag.Roles = RoleManager.Roles.Select(r => new { Value = r.Name, Text = r.PersianRoelName });
             //foreach (var role in RoleManager.Roles)
             //{
@@ -233,18 +233,60 @@ namespace Samane.Controllers
             {
                 if ((string)TempData["userNo"] == "HospitalUsers")
                 {
+                    ///////////////////////////////////////////////////////////////////////////////////////////////////////
+                    List<SelectListItem> list = new List<SelectListItem>();
+                    foreach (var city in db.T_City)
+                    {
+                        list.Add(new SelectListItem() { Value = city.City_Name.ToString(), Text = city.City_Name.ToString() });
+                    }
+                    ViewBag.Cities = list;
+                    List<SelectListItem> listt = new List<SelectListItem>();
+                    foreach (var state in db.T_State)
+                    {
+                        listt.Add(new SelectListItem() { Value = state.State_Name.ToString(), Text = state.State_Name.ToString() });
+                    }
+                    ViewBag.Province = listt;
+                    ///////////////////////////////////////////////////////////////////////////////////////////////////////
                     var hospitaluserviewmodel = new HospitalUserRegisterViewModel();
                     TempData["HospitalUserModel"] = hospitaluserviewmodel;
                     return View("RegisterForHospital");
                 }
                 else if ((string)TempData["userNo"] == "EngineerUsers")
                 {
+                    ///////////////////////////////////////////////////////////////////////////////////////////////////////
+                    List<SelectListItem> list = new List<SelectListItem>();
+                    foreach (var city in db.T_City)
+                    {
+                        list.Add(new SelectListItem() { Value = city.City_Name.ToString(), Text = city.City_Name.ToString() });
+                    }
+                    ViewBag.Cities = list;
+                    List<SelectListItem> listt = new List<SelectListItem>();
+                    foreach (var state in db.T_State)
+                    {
+                        listt.Add(new SelectListItem() { Value = state.State_Name.ToString(), Text = state.State_Name.ToString() });
+                    }
+                    ViewBag.Province = listt;
+                    ///////////////////////////////////////////////////////////////////////////////////////////////////////
                     var engineeruserviewmodel = new EngineerUserRegisterViewModel();
                     TempData["EngineerUserModel"] = engineeruserviewmodel;
                     return View("RegisterForEngineer");
                 }
                 else if ((string)TempData["userNo"] == "AdminUser")
                 {
+                    /////////////////////////////////////////////////////////////////////////////
+                    List<SelectListItem> list = new List<SelectListItem>();
+                    foreach (var city in db.T_City)
+                    {
+                        list.Add(new SelectListItem() { Value = city.City_Name.ToString(), Text = city.City_Name.ToString() });
+                    }
+                    ViewBag.Cities = list;
+                    List<SelectListItem> listt = new List<SelectListItem>();
+                    foreach (var state in db.T_State)
+                    {
+                        listt.Add(new SelectListItem() { Value= state.State_Name.ToString() , Text=state.State_Name.ToString() });
+                    }
+                    ViewBag.Province = listt;
+                    ///////////////////////////////////////////////////////////////////////
                     RegisterViewModel registerviewmodel = new RegisterViewModel();
                     TempData["AdminUserModel"] = registerviewmodel;
                     return View("RegisterForAdmin");
@@ -260,6 +302,19 @@ namespace Samane.Controllers
 
         }
 
+        [HttpPost]
+        [AllowAnonymous]
+        public PartialViewResult _Register(string stateName)
+        {
+            List<SelectListItem> citylist = new List<SelectListItem>();
+            var SelectedStateName = db.T_State.FirstOrDefault(s => s.State_Name == stateName);
+            var CitiesInSpecifiedState = db.T_City.Where(c => c.State_ID == SelectedStateName.State_ID);
+            foreach (var city in CitiesInSpecifiedState)
+            {
+                citylist.Add(new SelectListItem() { Value = city.City_Name, Text = city.City_Name.ToString() });
+            }
+            return PartialView("_Register", citylist);
+        }
         //
         // POST: /Account/Register
         [HttpPost]
@@ -275,7 +330,7 @@ namespace Samane.Controllers
                 var user = new ApplicationUser { City = Adminmodel.City, Province = Adminmodel.Province, PhoneNumber = Adminmodel.PhoneNumberr, NameAndLastName = Adminmodel.NameAndLastName, Email = Adminmodel.UserNamee, UserName = Adminmodel.UserNamee, userRole = (string)TempData["userNoo"] };
                 if (ModelState.IsValid)
                 {
-                    var result = await UserManager.CreateAsync(user, Engineermodel.Password);
+                    var result = await UserManager.CreateAsync(user, Adminmodel.Password);
                     AddErrors(result);
                 }
 
@@ -299,6 +354,20 @@ namespace Samane.Controllers
                     else
                     {
                         TempData["userNoo"] = "AdminUser";
+                        ///////////////////////////////////////////////////////////////////////////////////
+                        List<SelectListItem> list = new List<SelectListItem>();
+                        foreach (var city in db.T_City)
+                        {
+                            list.Add(new SelectListItem() { Value = city.City_Name.ToString(), Text = city.City_Name.ToString() });
+                        }
+                        ViewBag.Cities = list;
+                        List<SelectListItem> listt = new List<SelectListItem>();
+                        foreach (var state in db.T_State)
+                        {
+                            listt.Add(new SelectListItem() { Value = state.State_Name.ToString(), Text = state.State_Name.ToString() });
+                        }
+                        ViewBag.Province = listt;
+                        ////////////////////////////////////////////////////////////////////////////////////////////////
                         return View("RegisterForAdmin");
                     }
                 }
@@ -306,9 +375,24 @@ namespace Samane.Controllers
                 {
                     //Returning Model For possible errors (Admin Model)
                     TempData["userNoo"] = "AdminUser";
+
+                    ///////////////////////////////////////////////////////////////////////////////////////////////////////
+                    List<SelectListItem> list = new List<SelectListItem>();
+                    foreach (var city in db.T_City)
+                    {
+                        list.Add(new SelectListItem() { Value = city.City_Name.ToString(), Text = city.City_Name.ToString() });
+                    }
+                    ViewBag.Cities = list;
+                    List<SelectListItem> listt = new List<SelectListItem>();
+                    foreach (var state in db.T_State)
+                    {
+                        listt.Add(new SelectListItem() { Value = state.State_Name.ToString(), Text = state.State_Name.ToString() });
+                    }
+                    ViewBag.Province = listt;
+                    ///////////////////////////////////////////////////////////////////////////////////////////////////////
                     return View("RegisterForAdmin");
                 }
-                
+
             }
             else if ((string)TempData["userNoo"] == "HospitalUsers")
             {
@@ -342,12 +426,40 @@ namespace Samane.Controllers
                     else
                     {
                         TempData["userNoo"] = "HospitalUsers";
+                        ///////////////////////////////////////////////////////////////////////////////////////////////////////
+                        List<SelectListItem> list = new List<SelectListItem>();
+                        foreach (var city in db.T_City)
+                        {
+                            list.Add(new SelectListItem() { Value = city.City_Name.ToString(), Text = city.City_Name.ToString() });
+                        }
+                        ViewBag.Cities = list;
+                        List<SelectListItem> listt = new List<SelectListItem>();
+                        foreach (var state in db.T_State)
+                        {
+                            listt.Add(new SelectListItem() { Value = state.State_Name.ToString(), Text = state.State_Name.ToString() });
+                        }
+                        ViewBag.Province = listt;
+                        ///////////////////////////////////////////////////////////////////////////////////////////////////////
                         return View("RegisterForHospital");
                     }
                 }
                 else
                 {
                     TempData["userNoo"] = "HospitalUsers";
+                    ///////////////////////////////////////////////////////////////////////////////////////////////////////
+                    List<SelectListItem> list = new List<SelectListItem>();
+                    foreach (var city in db.T_City)
+                    {
+                        list.Add(new SelectListItem() { Value = city.City_Name.ToString(), Text = city.City_Name.ToString() });
+                    }
+                    ViewBag.Cities = list;
+                    List<SelectListItem> listt = new List<SelectListItem>();
+                    foreach (var state in db.T_State)
+                    {
+                        listt.Add(new SelectListItem() { Value = state.State_Name.ToString(), Text = state.State_Name.ToString() });
+                    }
+                    ViewBag.Province = listt;
+                    ///////////////////////////////////////////////////////////////////////////////////////////////////////
                     return View("RegisterForHospital");
                 }
             }
@@ -365,7 +477,8 @@ namespace Samane.Controllers
                     var result = await UserManager.AddToRoleAsync(user.Id, user.userRole);
                     await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
                     AddErrors(result);
-                    if (ModelState.IsValid) {
+                    if (ModelState.IsValid)
+                    {
                         EngineerUser engineeruser = new EngineerUser();
                         engineeruser.NameAndLastName = user.NameAndLastName;
                         engineeruser.instruments = user.ExpertInInstruments;
@@ -380,6 +493,20 @@ namespace Samane.Controllers
                     else
                     {
                         TempData["userNoo"] = "EngineerUsers";
+                        ///////////////////////////////////////////////////////////////////////////////////////////////////////
+                        List<SelectListItem> list = new List<SelectListItem>();
+                        foreach (var city in db.T_City)
+                        {
+                            list.Add(new SelectListItem() { Value = city.City_Name.ToString(), Text = city.City_Name.ToString() });
+                        }
+                        ViewBag.Cities = list;
+                        List<SelectListItem> listt = new List<SelectListItem>();
+                        foreach (var state in db.T_State)
+                        {
+                            listt.Add(new SelectListItem() { Value = state.State_Name.ToString(), Text = state.State_Name.ToString() });
+                        }
+                        ViewBag.Province = listt;
+                        ///////////////////////////////////////////////////////////////////////////////////////////////////////
                         return View("RegisterForEngineer");
                     }
                 }
@@ -387,8 +514,22 @@ namespace Samane.Controllers
                 {
                     //Returning Model For possible errors (Engineer Model)
                     TempData["userNoo"] = "EngineerUsers";
+                    ///////////////////////////////////////////////////////////////////////////////////////////////////////
+                    List<SelectListItem> list = new List<SelectListItem>();
+                    foreach (var city in db.T_City)
+                    {
+                        list.Add(new SelectListItem() { Value = city.City_Name.ToString(), Text = city.City_Name.ToString() });
+                    }
+                    ViewBag.Cities = list;
+                    List<SelectListItem> listt = new List<SelectListItem>();
+                    foreach (var state in db.T_State)
+                    {
+                        listt.Add(new SelectListItem() { Value = state.State_Name.ToString(), Text = state.State_Name.ToString() });
+                    }
+                    ViewBag.Province = listt;
+                    ///////////////////////////////////////////////////////////////////////////////////////////////////////
                     return View("RegisterForEngineer");
-                }             
+                }
             }
             else
             {

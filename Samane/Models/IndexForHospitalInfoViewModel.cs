@@ -11,60 +11,49 @@ namespace Samane.Models
 
     public class IndexForHospitalInfoViewModel
     {
-     
         private SamaneDbContext SamanehDB = new SamaneDbContext();
         private ApplicationUserForHospitals applicationUserForHospitals = new ApplicationUserForHospitals();
-        private Hospital _hospital = new Hospital();
         public Instrument instrument = new Instrument();
         List<string> errorMessage = new List<string>();
         List<ApplicationUserForEngineers> EngineerList = new List<ApplicationUserForEngineers>();
-        //List<Requests> requests = new List<Requests>();
 
-        public Hospital hospital
-        {
-            get { return _hospital; }
-            set { _hospital = value; }
-        }
-
+        public Hospital hospital { get; set; }
         public ApplicationUserForHospitals HospitalUser
         {
             get { return applicationUserForHospitals; }
             set
             {
                 applicationUserForHospitals = value;
-                GetHospitalInformation();
+                FillhosPropFromDbtoViewModel();
             }
         }
         public IndexForHospitalInfoViewModel(string username = null)
         {
-            GetHospitalInformation(username);
+            FillhosPropFromDbtoViewModel(username);
             GetThisHospitalInstrument(this.hospital);
         }
-        public void GetHospitalInformation(string username = null)
+        public void FillhosPropFromDbtoViewModel(string username = null)
         {
-            if (username is null && applicationUserForHospitals.UserName is null)
+            if (username == null && applicationUserForHospitals.UserName == null)
                 return;
-
-            string _username = (applicationUserForHospitals.UserName != null) 
-                                ? applicationUserForHospitals.UserName
-                                : username;
-            if (applicationUserForHospitals.UserName is null)
-                applicationUserForHospitals.UserName = _username;
-
-            if (this._hospital.UserNamee == null)
-                this._hospital = SamanehDB.Hospitals
-                    .Where(hos => hos.UserNamee == _username)
-                    .Include(h => h.instruments)
+            if (username!=null && applicationUserForHospitals.UserName == null)
+            {
+                applicationUserForHospitals.UserName = username;
+            }
+            this.hospital = new Hospital();
+            if (this.hospital.UserNamee is null)
+                this.hospital = SamanehDB.Hospitals
+                    .Where(h => h.UserNamee == applicationUserForHospitals.UserName)
+                    .Include(i => i.instruments)
                     .FirstOrDefault();
-
         }
+
 
         public List<Instrument> GetThisHospitalInstrument(Hospital thisHospital)
         {
-            if (_hospital.instruments is null)
-                GetHospitalInformation(username: thisHospital.UserNamee);
-                 //_hospital.instruments =SamanehDB.Instruments.Where(ins => ins.UserName == thisHospital.UserNamee).ToList();
-            return _hospital.instruments;
+            if (this.hospital.instruments is null)
+                FillhosPropFromDbtoViewModel(username: thisHospital.UserNamee);
+            return this.hospital.instruments;
         }
 
         public bool UpdateHospitalInfo(Hospital hospital, out List<string> errorMessage)
@@ -99,8 +88,7 @@ namespace Samane.Models
                 return false;
             }
             SamanehDB.Instruments.Remove(instrument);
-            //instrument = new Instrument() { InstrumentId = instrumentId };
-            //SamanehDB.Entry<Instrument>(instrument).State = EntityState.Deleted;
+
             try
             {
                 if (SamanehDB.SaveChanges() >= 0)
@@ -150,32 +138,10 @@ namespace Samane.Models
         public Instrument GetHospitalInstrument(int insturmentID)
         {
             if (this.hospital.instruments is null)
-                GetHospitalInformation();
+                FillhosPropFromDbtoViewModel();
             return this.hospital.instruments.Where(i => i.InstrumentId == insturmentID).FirstOrDefault();
         }
 
-        //private Hospital GetHospitalInfo()
-        //{
-        //    var hospitalUsers = Userdb.Users.OfType<ApplicationUserForHospitals>().ToList();
-        //    var userforhospital = hospitalUsers.FirstOrDefault(m => m.UserName == User.Identity.Name);
-        //    var hospital = new Hospital
-        //    {
-        //        UserNamee = userforhospital.UserName,
-        //        City = userforhospital.City,
-        //        Province = userforhospital.Province,
-        //        PhoneNumber = userforhospital.PhoneNumber,
-        //        InChargePerson = userforhospital.NameAndLastName,
-        //        HospitalName = userforhospital.HospitalName
-        //    };
-        //    var hospitalInDb = db.Hospitals.Find(userforhospital.UserName);
-        //    if (hospitalInDb != null)
-        //    {
-        //        hospital.City = hospitalInDb.City;
-        //        hospital.Province = hospitalInDb.Province;
-        //    }
-
-        //    return hospital;
-        //}
 
     }
 }
