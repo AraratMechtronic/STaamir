@@ -121,15 +121,20 @@ body {
 
 
 
-p, h1, h2, h3, h4, h5, h6, ul {
+p, ul {
     margin: 0;
     /*font-family: Samim-Bold;*/
+
+}
+h1, h2, h3, h4, h5, h6 {
+    margin: 0;
+    font-family: "Mj_Beirut Light";
 }
 
-img {
-    max-width: 100%;
-    border-radius: 15px;
-}
+    img {
+        max-width: 100%;
+        border-radius: 15px;
+    }
 
 .imgauthen {
     box-shadow: 0px 0px 10px 5px rgba(0, 0, 0, 0.2);
@@ -141,6 +146,7 @@ img {
 
 ul {
     padding-left: 0;
+    padding-right: 0;
     margin-bottom: 0;
 }
 
@@ -477,7 +483,7 @@ h2, h3 {
     width: 250px;
 }
 .butten {
-    letter-spacing: 2px;
+    letter-spacing: 0.5px;
     border: none;
     width: 133px;
     height: 47px;
@@ -555,6 +561,8 @@ a {
     color: white;
     /*color: #999;*/
     transition: all 0.3s ease;
+    /*font-family: "ElMessiri-SemiBold";*/
+    font-family: "Mj_Beirut Light";
 }
 /*van*/
 a p {
@@ -641,6 +649,7 @@ a p {
 
     h2, h4, h3, h5 {
         font-size: 100%;
+        font-family: "Mj_Beirut Light";
     }
 
     .resize {
@@ -720,7 +729,7 @@ a p {
 }
 
 .table {
-    margin-top: 15px;
+    /*margin-top: 15px;*/ /* van1*/
 }
 
 .td_header {
@@ -763,7 +772,10 @@ a p {
     text-align: right;
     color: white;
 }
-
+    .f_title h4 {
+        font-family: "Mj_Beirut Light";
+        letter-spacing: 1px;
+    }
 .footer-item {
     margin-bottom: 20px;
     direction: rtl;
@@ -1024,9 +1036,9 @@ th, td {
 }
 /*-----------------------------instrument in admin myapanel------------------*/
 @media (max-width: 992px) {
-    table, thead, tbody, th, .instrumentTable, .hospitalTabletd, tr {
+    table, thead, tbody, th, .instrumentTable, .hospitalTabletd, .hospitalInstrument, tr {
         display: block;
-        background-color: white;
+        background-color: #777777;
         text-align: center;
     }
 
@@ -1115,39 +1127,51 @@ th, td {
     .hospitalTabletd:nth-of-type(5):before {
         content: "شماره موبایل";
     }
+
     .hospitalTabletd:nth-of-type(6):before {
+        content: "";
+    }
+
+    /*-----------------------------instrument in hospital user in mypanel------------------*/
+    .hospitalInstrument:nth-of-type(1):before {
+        content: "کد دستگاه";
+    }
+
+    .hospitalInstrument:nth-of-type(2):before {
+        content: "کد دستگاه";
+    }
+
+    .hospitalInstrument:nth-of-type(3):before {
+        content: "مدل دستگاه";
+    }
+
+    .hospitalInstrument:nth-of-type(4):before {
+        content: "سریال";
+    }
+
+    .hospitalInstrument:nth-of-type(5):before {
+        content: "گروه";
+    }
+
+    .hospitalInstrument:nth-of-type(6):before {
+        content: "";
+    }
+
+    .hospitalInstrument:nth-of-type(7):before {
         content: "";
     }
 }
 /*==================================================================
 [ Ver3 ]*/
 .table100.ver3 {
-    background-color: #393939;
+  
 }
 
-    .table100.ver3 th {
-        font-family: Lato-Bold;
-        font-size: 15px;
-        font-family: "ElMessiri-SemiBold";
-        color: white;
-        text-align: center;
-        line-height: 1.4;
-        text-transform: uppercase;
-        background-color: #303339;
-        /*position: fixed;*/
-    }
 
-    .table100.ver3 td {
-        font-family: Lato-Regular;
-        font-size: 15px;
-        color: #808080;
-        line-height: 1.4;
-        background-color: #b4b8b5;
-        text-align: center;
-        color: #303339;
-    }
 /*---------------------------------------------*/
 .table100.ver3 {
+    background-color: #393939;
+    margin-top: 15px;
     border-radius: 10px;
     overflow: hidden;
     box-shadow: 0 0px 40px 0px rgba(0, 0, 0, 0.15);
@@ -1156,7 +1180,27 @@ th, td {
     -o-box-shadow: 0 0px 40px 0px rgba(0, 0, 0, 0.15);
     -ms-box-shadow: 0 0px 40px 0px rgba(0, 0, 0, 0.15);
 }
+    .table100.ver3 th {
+        /*font-family: Lato-Bold;*/
+        font-size: 15px;
+        font-family: "ElMessiri-SemiBold";
+        color: white;
+        text-align: center;
+        line-height: 1.4;
+        text-transform: uppercase;
+        background-color: #777777;
+        /*position: fixed;*/
+    }
 
+    .table100.ver3 td {
+        font-family: Lato-Regular;
+        font-size: 15px;
+        color: #808080;
+        line-height: 1.4;
+        background-color: #c6c5c5;
+        text-align: center;
+        color: #303339;
+    }
     .table100.ver3 .ps__rail-y {
         right: 5px;
     }
