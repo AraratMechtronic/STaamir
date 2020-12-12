@@ -45,12 +45,8 @@
                     </div>
                 </div>
                 <div class="form-login">
-                    <button>
-                        @Html.ActionLink("ویرایش", "Edit", new { id = Model.InstrumentId })
-                    </button>
-                    <button>
-                        @Html.ActionLink("برگشت به لیست", "Index") 
-                    </button>
+                    @Html.ActionLink("ویرایش", "Edit", "Instruments", new { id = Model.InstrumentId }, new { @class = "butten" })
+                    @Html.ActionLink("برگشت به لیست", "Index", "Instruments", null, new { @class = "butten" })
                 </div>
             </div>
         }

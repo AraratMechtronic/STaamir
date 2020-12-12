@@ -52,23 +52,19 @@
                         @Html.ValidationMessageFor(model => model.hospital.HospitalName, "", new { @class = "text-danger" })
                     </div>
                 </div>
-                <div class="form-login">
-                    <div class="button">
-                        <button value="Create">
-                            ثبت
-                            @*<input type="submit" value="Create" class="butten" />*@ @*please chek it*@
-                        </button>
-                    </div>
-                    <button>
-                        @Html.ActionLink("برگشت به لیست", "Index")
-                    </button>
-                </div>
-
-                @*<div class="form-group">
-                        <div class="col-md-offset-2 col-md-10">
-                            <input type="submit" value="Save" class="btn btn-default" />
+                @*<div class="form-login">
+                        <div class="button">
+                            <button value="Create">
+                                ثبت
+                                <input type="submit" value="ثبت" class="butten" />
+                            </button>
                         </div>
                     </div>*@
+
+                <div class="form-login">
+                    <input type="submit" value="ثبت" class="butten" />
+                    @Html.ActionLink("بازگشت", "Index", "Instruments", null, new { @class = "butten" })
+                </div>
             </div>
         }
     </div>
