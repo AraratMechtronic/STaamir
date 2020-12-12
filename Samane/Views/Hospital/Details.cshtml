@@ -6,7 +6,12 @@
 
 <h2>Details</h2>
 
-
+@*@if (Model.Count() == 0)
+    {
+        <p>دستگاهی برای این بیمارستان وارد نشده است</p>
+    }
+    else
+    {*@
 <table class="table">
     <tr>
         <th>
@@ -24,22 +29,28 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.InstrumentId)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Model)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.SerialNo)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.hospital.HospitalName)
-        </td>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.InstrumentId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Model)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SerialNo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.hospital.HospitalName)
+            </td>
 
-    </tr>
-}
+        </tr>
+    }
 
 </table>
+@*}*@
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
