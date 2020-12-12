@@ -6,41 +6,41 @@
     {
         @Html.AntiForgeryToken()
 
-        <div class="form-horizontal"  style="direction:rtl;">
-            <h4>Instrument</h4>
+        <div class="form-horizontal" style="direction:rtl;">
+            <h4>ویرایش دستگاه</h4>
             <hr />
             @Html.ValidationSummary(true, "", new { @class = "text-danger" })
             @Html.HiddenFor(model => model.InstrumentId)
-            @Html.HiddenFor(model=>model.UserName)
-            @Html.HiddenFor(model=>model.hospital)
+            @Html.HiddenFor(model => model.UserName)
+            @Html.HiddenFor(model => model.hospital)
 
             <div class="form-group">
-                @Html.LabelFor(model => model.Category, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
+                @Html.LabelFor(model => model.Category, htmlAttributes: new { @class = "control-label col-md-3" })
+                <div class="col-md-5">
                     @Html.EditorFor(model => model.Category, new { htmlAttributes = new { @class = "form-control" } })
                     @Html.ValidationMessageFor(model => model.Category, "", new { @class = "text-danger" })
                 </div>
             </div>
 
             <div class="form-group">
-                @Html.LabelFor(model => model.Model, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
+                @Html.LabelFor(model => model.Model, htmlAttributes: new { @class = "control-label col-md-3" })
+                <div class="col-md-5">
                     @Html.EditorFor(model => model.Model, new { htmlAttributes = new { @class = "form-control" } })
                     @Html.ValidationMessageFor(model => model.Model, "", new { @class = "text-danger" })
                 </div>
             </div>
 
             <div class="form-group">
-                @Html.LabelFor(model => model.SerialNo, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
+                @Html.LabelFor(model => model.SerialNo, htmlAttributes: new { @class = "control-label col-md-3" })
+                <div class="col-md-5">
                     @Html.EditorFor(model => model.SerialNo, new { htmlAttributes = new { @class = "form-control" } })
                     @Html.ValidationMessageFor(model => model.SerialNo, "", new { @class = "text-danger" })
                 </div>
             </div>
 
             <div class="form-group">
-                @Html.LabelFor(model => model.UserName, "UserName", htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
+                @Html.LabelFor(model => model.UserName, "UserName", htmlAttributes: new { @class = "control-label col-md-3" })
+                <div class="col-md-5">
                     @Model.UserName
                     @*@Html.DropDownList("UserName", null, htmlAttributes: new { @class = "form-control" })*@
                     @*@Html.ValidationMessageFor(model => model.UserName, "", new { @class = "text-danger" })*@
@@ -49,7 +49,7 @@
 
             <div class="form-group">
                 <div class="col-md-offset-2 col-md-10">
-                    <input type="submit" value="Save" class="btn btn-default" />
+                    <input type="submit" value="ثبت" class="butten" />
                 </div>
             </div>
         </div>
