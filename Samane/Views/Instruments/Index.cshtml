@@ -12,7 +12,6 @@
 <script src="~/css/sortable-tables.min.js" type="text/javascript"></script>
 @*------------------------------------------------*@
 <style>
-
 </style>
 
 <h2>Index</h2>
@@ -56,37 +55,37 @@
                         <tbody>
                             @foreach (var item in Model)
                             {
-                            <tr>
-                                <td class="instrumentTable">
-                                    @Html.DisplayFor(modelItem => item.InstrumentId)
-                                </td>
-                                <td class="instrumentTable">
-                                    @Html.DisplayFor(modelItem => item.hospital.HospitalName)
-                                </td>
-                                <td class="instrumentTable">
-                                    @Html.DisplayFor(modelItem => item.UserName)
-                                </td>
-                                <td class="instrumentTable">
-                                    @Html.DisplayFor(modelItem => item.hospital.Province)
-                                </td>
-                                <td class="instrumentTable">
-                                    @Html.DisplayFor(modelItem => item.hospital.City)
-                                </td>
-                                <td class="instrumentTable">
-                                    @Html.DisplayFor(modelItem => item.Category)
-                                </td>
-                                <td class="instrumentTable">
-                                    @Html.DisplayFor(modelItem => item.Model)
-                                </td>
-                                <td class="instrumentTable">
-                                    @Html.DisplayFor(modelItem => item.SerialNo)
-                                </td>
-                                <td class="instrumentTable">
-                                    @Html.ActionLink("Edit", "Edit", new { id = item.InstrumentId }) |
-                                    @Html.ActionLink("Details", "Details", new { id = item.InstrumentId }) |
-                                    @Html.ActionLink("Delete", "Delete", new { id = item.InstrumentId })
-                                </td>
-                            </tr>
+                                <tr>
+                                    <td class="instrumentTable">
+                                        @Html.DisplayFor(modelItem => item.InstrumentId)
+                                    </td>
+                                    <td class="instrumentTable">
+                                        @Html.DisplayFor(modelItem => item.hospital.HospitalName)
+                                    </td>
+                                    <td class="instrumentTable">
+                                        @Html.DisplayFor(modelItem => item.UserName)
+                                    </td>
+                                    <td class="instrumentTable">
+                                        @Html.DisplayFor(modelItem => item.hospital.Province)
+                                    </td>
+                                    <td class="instrumentTable">
+                                        @Html.DisplayFor(modelItem => item.hospital.City)
+                                    </td>
+                                    <td class="instrumentTable">
+                                        @Html.DisplayFor(modelItem => item.Category)
+                                    </td>
+                                    <td class="instrumentTable">
+                                        @Html.DisplayFor(modelItem => item.Model)
+                                    </td>
+                                    <td class="instrumentTable">
+                                        @Html.DisplayFor(modelItem => item.SerialNo)
+                                    </td>
+                                    <td class="instrumentTable">
+                                        @Html.ActionLink("Edit", "Edit", new { id = item.InstrumentId }) |
+                                        @Html.ActionLink("Details", "Details", new { id = item.InstrumentId }) |
+                                        @Html.ActionLink("Delete", "Delete", new { id = item.InstrumentId })
+                                    </td>
+                                </tr>
                             }
                         </tbody>
                     </table>
@@ -95,9 +94,10 @@
 
         </div>
         <div class="form-login">
-            <button>
-                @Html.ActionLink("افزودن دستگاه", "Create")
-            </button>
+            @Html.ActionLink("افزودن دستگاه", "Create", "Instruments", null, new { @class = "butten" })
+            @*<button>
+                    @Html.ActionLink("افزودن دستگاه", "Create")
+                </button>*@
         </div>
     </div>
 </div>
