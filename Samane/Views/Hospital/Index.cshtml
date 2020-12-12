@@ -20,28 +20,28 @@
         <div class="wrap-table100">
             <div class="table100 ver3 m-b-110">
                 @*BARAYE FIX KARDANE TITR
-                    <div class="table100-head">
-                    <table class="">
-                        <thead>
-                            <tr class="row100 head">
-                                <th class="cell100 column1">
-                                    @Html.DisplayNameFor(model => model.Province)
-                                </th>
-                                <th class="cell100 column2">
-                                    @Html.DisplayNameFor(model => model.City)
-                                </th>
-                                <th class="cell100 column3">
-                                    @Html.DisplayNameFor(model => model.InChargePerson)
-                                </th>
-                                <th class="cell100 column4">
-                                    @Html.DisplayNameFor(model => model.HospitalName)
-                                </th>
-                                <th class="cell100 column5">وضعیت</th>
-                            </tr>
-                        </thead>
+                        <div class="table100-head">
+                        <table class="">
+                            <thead>
+                                <tr class="row100 head">
+                                    <th class="cell100 column1">
+                                        @Html.DisplayNameFor(model => model.Province)
+                                    </th>
+                                    <th class="cell100 column2">
+                                        @Html.DisplayNameFor(model => model.City)
+                                    </th>
+                                    <th class="cell100 column3">
+                                        @Html.DisplayNameFor(model => model.InChargePerson)
+                                    </th>
+                                    <th class="cell100 column4">
+                                        @Html.DisplayNameFor(model => model.HospitalName)
+                                    </th>
+                                    <th class="cell100 column5">وضعیت</th>
+                                </tr>
+                            </thead>
 
-                    </table>
-                </div>*@
+                        </table>
+                    </div>*@
 
                 <div class="table100-body js-pscroll ps--active-y ps">
                     <table class="sortable-table">
@@ -59,7 +59,10 @@
                                 <th class="cell100 column4">
                                     @Html.DisplayNameFor(model => model.HospitalName)
                                 </th>
-                                <th class="cell100 column5">وضعیت</th>
+                                <th class="cell100 column5">
+                                    @Html.DisplayNameFor(model => model.PhoneNumber)
+                                </th>
+                                <th class="cell100 column6">وضعیت</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -67,21 +70,24 @@
                             {
 
                                 <tr>
-                                    <td class="cell100 column1">
+                                    <td class="cell100 hospitalTabletd">
                                         @Html.DisplayFor(modelItem => item.Province)
                                     </td>
-                                    <td class="cell100 column2">
+                                    <td class="cell100 hospitalTabletd">
                                         @Html.DisplayFor(modelItem => item.City)
                                     </td>
-                                    <td class="cell100 column3">
+                                    <td class="cell100 hospitalTabletd">
                                         @Html.DisplayFor(modelItem => item.InChargePerson)
                                     </td>
-                                    <td class="cell100 column4">
+                                    <td class="cell100 hospitalTabletd">
                                         @Html.DisplayFor(modelItem => item.HospitalName)
                                     </td>
-                                    <td class="cell100 column5">
-                                        @Html.ActionLink("Edit", "Edit", new { id = item.HospitalName, @class = "fa fa-user-plus" }) |
-                                        @Html.ActionLink("Details", "Details", new { id = item.HospitalName }) |
+                                    <td class="cell100 hospitalTabletd">
+                                        @Html.DisplayFor(modelItem => item.PhoneNumber)
+                                    </td>
+                                    <td class="cell100 hospitalTabletd">
+                                        @Html.ActionLink("Edit", "Edit", new { hospitalName = item.HospitalName, @class = "fa fa-user-plus" }) |
+                                        @Html.ActionLink("Details", "Details", new { hospitalName = item.HospitalName }) |
                                         @Html.ActionLink("Delete", "Delete", new { hospitalName = item.HospitalName, city = item.City })
                                     </td>
                                 </tr>
@@ -98,9 +104,7 @@
         </div>
 
         <div class="form-login">
-            <button>
-                @Html.ActionLink("بیمارستان جدید", "Create")
-            </button>
+            @Html.ActionLink("بیمارستان جدید", "Create", "Hospital", null, new { @class = "butten" })
         </div>
     </div>
 </div>
