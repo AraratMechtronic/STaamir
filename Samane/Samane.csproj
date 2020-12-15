@@ -190,6 +190,8 @@
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\MyPanelController.cs" />
     <Compile Include="Controllers\RoleController.cs" />
+    <Compile Include="DbContext Classes\ApplicationDBContextInitializer.cs" />
+    <Compile Include="DbContext Classes\CityStateDbContext.cs" />
     <Compile Include="DbContext Classes\SamaneDbContext.cs" />
     <Compile Include="DbContext Classes\SamaneDbContextInitializerForModelChange.cs" />
     <Compile Include="DbContext Classes\SeedDataForHospitalsInstruments.cs" />
@@ -224,6 +226,8 @@
     <Compile Include="Models\Instrument.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\IndexForHospitalInfoViewModel.cs" />
+    <Compile Include="Models\T_City.cs" />
+    <Compile Include="Models\T_State.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RepositoriesForAuthentication\AdminUser.cs" />
     <Compile Include="RepositoriesForAuthentication\EngineerUser.cs" />
