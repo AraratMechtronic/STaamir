@@ -23,7 +23,9 @@ namespace Samane
                       "~/Scripts/bootstrap.js",
                       "~/Scripts/respond.js",
                       "~/Scripts/jquery_main.js",
-                      "~/js/main.js"));
+                      "~/js/main.js",
+                      "~/js/aos.js",
+                      "~/js/mains.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
