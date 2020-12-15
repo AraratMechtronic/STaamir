@@ -3,10 +3,20 @@
 
 @{
     ViewBag.Title = "Register";
+    AjaxOptions ajaxOptions
+        = new AjaxOptions()
+        {
+            InsertionMode = InsertionMode.Replace,
+            HttpMethod = "Post",
+            UpdateTargetId = "City_Dropdown_Container"
+
+        };
 }
 
-    @*<script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
-    <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>*@
+<script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
+<script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+
+
 <div class="wrapper wrapper-admin">
     <div class="inner inner-admin">
         <div class="image-holder">
@@ -34,20 +44,7 @@
 
 
 
-            <div class="form-holder">
-                @Html.ValidationMessage("Province","",new { @class = "text-danger" })
-                @*@Html.LabelFor(m => m.userCategory, new { @class = "col-md-2 control-label" })*@
-                @Html.DropDownListFor(m=>m.Province, (List<SelectListItem>)ViewBag.Provinc , " استان خود را انتخاب نمایید", new { id = "statedropdown", onchange = "getstatename();", @class = "form-control" })
-            </div>
 
-            <div class="form-holder">
-                @Html.ValidationMessage("City","", new { @class = "text-danger" })
-                @Html.DropDownListFor(m=>m.City, (List<SelectListItem>)ViewBag.Cities , " شهر خود را انتخاب نمایید", new { id = "citydropdown", onchange = "getcityname();", @class = "form-control" })
-            </div>
-
-            @*<div id="City_Dropdown_Container">
-                @Html.Partial("_Register", (List<SelectListItem>)ViewBag.RelatedCities)
-            </div>*@
 
             <div class="form-holder">
                 @*@Html.LabelFor(model => model.PhoneNumberr, htmlAttributes: new { @class = "control-label col-md-2" })*@
@@ -94,37 +91,57 @@
 </div>
 
 
-@*<script>
-    function getstatename() {
-        var x = document.getElementById("statedropdown").selectedIndex;
-        var selectedstate = document.getElementsByTagName("option")[x].value;
-        @Model.Province = selectedstate;
-        alert("state");
-        //$.ajax({
 
-        //    type: "POST",
-        //    url: "../Account/_Register",
-        //    data: { stateName: selectedstate },
-        //    succes: function (data) {
-        //        alert("success");
-        //        $("#City_Dropdown_Container").Html(data);
-        //    },
-        //    error: function () {
-        //        alert("Something went wrong in controller");
-        //    }
-        //})
-        
+
+<div class="wrapper wrapper-admin">
+    <div class="inner inner-admin">
+        <div class="image-holder">
+            <img src="~/images/admin-1.jpg" alt="">
+        </div>
+
+        @using (Ajax.BeginForm("Register", "Account", ajaxOptions, new { @class = "", role = "form" }))
+        {
+
+            <div class="form-holder">
+                @Html.ValidationMessage("Province", "", new { @class = "text-danger" })
+                @*@Html.LabelFor(m => m.userCategory, new { @class = "col-md-2 control-label" })*@
+                @Html.DropDownList("Province", (List<SelectListItem>)ViewBag.Province, " استان خود را انتخاب نمایید", new { id = "statedropdown", onchange = "this.form.submit();", @class = "form-control" })
+            </div>
+
+            <div id="City_Dropdown_Container">
+                @Html.Partial("_Register")
+                @*@Html.RenderPartial("_Register")*@
+            </div>
         }
-</script>
+
+    </div>
+</div>
+
 
 <script>
-    function getcityname() {
-        var y = document.getElementById("citydropdown").selectedIndex;
-        var selectedcity = document.getElementsByTagName("option")[y].value;
-        @Model.City=selectedcity;
-        alert("city");
-    }
-</script>*@
+    //function getstatename() {
+    //        var x = document.getElementById("statedropdown");
+    //        var selectedstate = x.options[x.selectedIndex].value;
+
+    //        alert("state");
+    //        $.ajax({
+
+    //            type: "POST",
+    //            url: "../Account/_Register",
+    //            data: { stateName: selectedstate },
+    //            succes: function (data) {
+    //                alert("success");
+    //                $("#City_Dropdown_Container").Html(data);
+    //            },
+    //            error: function () {
+    //                alert("Something went wrong in controller");
+    //            }
+    //        })
+
+    //        }
+</script>
+
+
 
 <div>
     @Html.ActionLink("Back", "Authenticate")

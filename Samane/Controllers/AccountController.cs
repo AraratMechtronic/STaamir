@@ -283,7 +283,7 @@ namespace Samane.Controllers
                     List<SelectListItem> listt = new List<SelectListItem>();
                     foreach (var state in db.T_State)
                     {
-                        listt.Add(new SelectListItem() { Value= state.State_Name.ToString() , Text=state.State_Name.ToString() });
+                        listt.Add(new SelectListItem() { Value = state.State_Name.ToString(), Text = state.State_Name.ToString() });
                     }
                     ViewBag.Province = listt;
                     ///////////////////////////////////////////////////////////////////////
@@ -304,17 +304,25 @@ namespace Samane.Controllers
 
         [HttpPost]
         [AllowAnonymous]
-        public PartialViewResult _Register(string stateName)
+        public ActionResult _Register(string Province)
+        {
+            GetRelatedCity(Province);
+            return View("_Register");
+        }
+
+        private List<SelectListItem> GetRelatedCity(string Province)
         {
             List<SelectListItem> citylist = new List<SelectListItem>();
-            var SelectedStateName = db.T_State.FirstOrDefault(s => s.State_Name == stateName);
+            var SelectedStateName = db.T_State.FirstOrDefault(s => s.State_Name == Province);
             var CitiesInSpecifiedState = db.T_City.Where(c => c.State_ID == SelectedStateName.State_ID);
             foreach (var city in CitiesInSpecifiedState)
             {
                 citylist.Add(new SelectListItem() { Value = city.City_Name, Text = city.City_Name.ToString() });
             }
-            return PartialView("_Register", citylist);
+            ViewBag.Bool = true;
+            return citylist;
         }
+
         //
         // POST: /Account/Register
         [HttpPost]
@@ -322,6 +330,7 @@ namespace Samane.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Register(RegisterViewModel Adminmodel, HospitalUserRegisterViewModel Hospitalmodel, EngineerUserRegisterViewModel Engineermodel)
         {
+            ViewBag.Bool = false;
             if ((string)TempData["userNoo"] == "AdminUser")
             {
                 ModelState.Remove("HospitalName");
@@ -368,7 +377,15 @@ namespace Samane.Controllers
                         }
                         ViewBag.Province = listt;
                         ////////////////////////////////////////////////////////////////////////////////////////////////
-                        return View("RegisterForAdmin");
+                        if (user.Province != null)
+                        {
+                            ViewBag.Cities = GetRelatedCity(user.Province);
+                            return PartialView("_Register");
+                        }
+                        else
+                        {
+                            return View("RegisterForAdmin");
+                        }
                     }
                 }
                 else
@@ -390,7 +407,15 @@ namespace Samane.Controllers
                     }
                     ViewBag.Province = listt;
                     ///////////////////////////////////////////////////////////////////////////////////////////////////////
-                    return View("RegisterForAdmin");
+                    if (user.Province != null)
+                    {
+                        ViewBag.Cities = GetRelatedCity(user.Province);
+                        return PartialView("_Register");
+                    }
+                    else
+                    {
+                        return View("RegisterForAdmin");
+                    }
                 }
 
             }

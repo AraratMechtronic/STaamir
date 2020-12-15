@@ -1,10 +1,10 @@
 ﻿@model IEnumerable<SelectListItem>
 
+@if (ViewBag.Bool == true)
+{
     <div>
-        @*@Html.DropDownList("City", new SelectList(new List<SelectListItem> { new SelectListItem { Value = "s", Text = "s" }, new SelectListItem { Value = "n", Text = "n" }, new SelectListItem { Value = "q", Text = "q" } }, "Value", "Text"), " شهر خود را انتخاب نمایید")*@      
-        @Html.DropDownList("City", new SelectList(Model, "Value", "Text"), " شهر خود را انتخاب نمایید")
-
+        @Html.ValidationMessage("City", "", new { @class = "text-danger" })
+        @Html.DropDownList("City", (List<SelectListItem>)ViewBag.Cities, " شهر خود را انتخاب نمایید", new { id = "citydropdown", @class = "form-control" })
     </div>
 
-
-
+}
