@@ -574,6 +574,9 @@ a p {
         color: white;
         /*color: #999;*/
     }
+.navbar-nav li a:hover {
+    background-color: var(--themes-main-color);
+}
 .unformframe {
     width: 50%;
     margin: 0 auto;
